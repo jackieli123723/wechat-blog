@@ -1,0 +1,22 @@
+{
+  "name": "wechat-blog",
+  "version": "1.0.0",
+  "description": "西门互联小程序博客",
+  "main": "app.js",
+  "scripts": {
+    "start": "wxss ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackieli123723/wechat-blog.git"
+  },
+  "author": "jackieli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackieli123723/wechat-blog/issues"
+  },
+  "homepage": "https://github.com/jackieli123723/wechat-blog#readme",
+  "dependencies": {
+    "wxss-cli": "^1.0.4"
+  }
+}

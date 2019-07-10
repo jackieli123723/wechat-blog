@@ -1,0 +1,26 @@
+<!--home.wxml-->
+<view class="article-main-box">
+	<view class="article-container">
+	   <view class="article-item" wx:for="{{artiles}}">
+		   <view class="pic">
+		   	  <image class="article-img" src="{{item.background_img}}" mode="scaleToFill"></image>
+		   </view>
+
+		   <view class="publish-date">	
+		   	  <text class="time top">22</text>
+		   	  <text class="time">六月</text>	  	
+		   </view>
+		      
+		  <view class="title">
+		  	 {{item.title}}
+		  </view>
+
+		  <view class="tips">
+		  	 {{item.content}}
+		  </view>
+		   	  
+		  <view class="tag">web前端</view>
+	  </view>
+
+	</view>
+</view>

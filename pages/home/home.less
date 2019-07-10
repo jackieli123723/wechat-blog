@@ -1,0 +1,89 @@
+.article-main-box{
+	 
+	  display: flex;
+	  flex-wrap: wrap;
+	  padding: 10rpx 15rpx 0;
+	
+	
+	.article-container{
+		flex: 1;
+	    position: relative;
+	    width: 100%;
+	    box-shadow: 0 0 20rpx rgba(0,0,0,.15);
+	}
+
+	.article-item{
+        position: relative;
+		margin-bottom: 10rpx;
+	}
+	.pic{
+		
+		width: 100%;
+		height: auto;
+		.article-img{
+			
+			width: 100%;
+
+		}
+	}
+
+	.publish-date{
+		width: 50px;
+		height: 50px;
+		border-radius:25px;
+		background:rgba(0,0,0,0.5);
+		color:#Fff;
+		position: absolute;
+		top:10rpx;
+		right:10rpx;
+		text-align:center;
+		line-height: 1;
+
+		.time{
+			display: block;
+		}
+		.top{
+			margin-top: 5px;
+		}
+	}
+
+	.title{
+		padding:15px;
+		color: #242f35;
+		font-size: 16px;
+		 font-weight: 400;
+		 /*单行打点*/
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	}
+
+	.tips{
+	/*多行打点 不用给height*/	
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-all;
+    line-height: 1.4;
+    padding:0 15px;
+    font-size: 14px;
+    color: #666;
+	}
+
+	.tag{
+		padding:6px;
+		font-size:14px;
+		color:rgba(255, 255, 255, 0.8);
+		background:rgba(0, 0, 0, 0.7);
+		border-radius:4px;
+		display:inline-block;
+		margin:8px 0 8px 15px;
+		line-height:1;
+
+
+	}
+
+
+}
+
