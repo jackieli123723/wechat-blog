@@ -1,14 +1,20 @@
 {
   "pages": [
+    "pages/home/home",
+    "pages/article/article",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/home/home"
+    "pages/logs/logs"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#4abdcc",
+    "navigationBarTitleText": "西门互联",
+    "navigationBarTextStyle": "white"
+  },
+
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -1,0 +1,5 @@
+<template name="loading">
+  <view class="loading">
+    正在加载...
+  </view>
+</template>

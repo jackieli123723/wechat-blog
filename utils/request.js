@@ -1,9 +1,13 @@
 const apiURL = 'https://textnuxt.lilidong.cn';
 
+import toast from './toast'
+
 const wxRequest = (params, url) => {
+  toast.loading();
+
   wx.request({
     url,
-    method: params.method || 'GET',
+    method: params.method || 'POST',
     data: params.data || {},
     header: {
       Accept: 'application/json',
@@ -13,16 +17,19 @@ const wxRequest = (params, url) => {
       if (params.success) {
         params.success(res);
       }
+      toast.loaded();
     },
     fail(res) {
       if (params.fail) {
         params.fail(res);
       }
+      toast.loaded();
     },
     complete(res) {
       if (params.complete) {
         params.complete(res);
       }
+      toast.loaded();
     },
   });
 };

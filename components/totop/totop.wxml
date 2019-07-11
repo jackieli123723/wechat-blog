@@ -1,0 +1,5 @@
+<template name="to-top">
+  <view id="back-top" class="back-top back-top--hidden js-hidden">
+    <text class="iconfont icon-top"></text>
+  </view>
+</template>

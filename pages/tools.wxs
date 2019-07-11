@@ -1,0 +1,75 @@
+//.wxs文件 共用 filter 效果哟
+var formatDate = function(value){
+    var chineseMonths = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
+    var time = getDate(parseInt(value));//有些特殊 不能使用 new Date() 用getDate .wxs 而且转字符串不能用Number 得用parseInt
+    var month = time.getMonth();
+    var today = time.getDate();
+   
+     chineseMonths.forEach(function(item,index,arr){
+        if(month == index){
+          month = item
+        }
+     })
+
+   if (today < 10) {
+        today = "0" + today;
+   }
+   return [today,month]
+     
+    //不能返回拼接的dom 
+    // return '<text class="time top">1</text><text class="time">2</text>'
+}
+
+
+var formatCreatTime = function (value){
+    var time = getDate(parseInt(value));//有些特殊 不能使用 new Date() 用getDate .wxs 而且转字符串不能用Number 得用parseInt
+    var year = time.getFullYear();
+    var month = time.getMonth() + 1;
+    var today = time.getDate();
+    var hour = time.getHours();
+    var minute = time.getMinutes();
+    var second = time.getSeconds();
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if (today < 10) {
+        today = "0" + today;
+    }
+
+    if (hour < 10) {
+        hour = "0" + hour;
+    }
+
+    if (minute < 10) {
+        minute = "0" + minute;
+    }
+    if (second < 10) {
+        second = "0" + second;
+    }
+
+    return year + "-" + month + "-" + today + " " + hour + ":" + minute + ":" + second;
+}
+
+
+var formatTag = function(type) {
+    switch (type)
+    {
+        case 1: return "web前端";
+        case 2: return "服务端";
+        case 3: return "构建工具";
+        case 4: return "数据库";
+        case 5: return "后端开发";
+        case 6: return "系统架构";
+        default:return ''
+    } 
+}
+
+
+
+//module对象暴露
+
+module.exports = {
+  formatDate: formatDate,
+  formatTag: formatTag,
+  formatCreatTime:formatCreatTime
+};

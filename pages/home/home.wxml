@@ -1,26 +1,44 @@
 <!--home.wxml-->
-<view class="article-main-box">
-	<view class="article-container">
-	   <view class="article-item" wx:for="{{artiles}}">
-		   <view class="pic">
-		   	  <image class="article-img" src="{{item.background_img}}" mode="scaleToFill"></image>
-		   </view>
+<wxs src='./../tools.wxs' module='tools'/>
 
+<import src="../../components/loading/loading.wxml"/>
+
+
+<scroll-view scroll-y="true" bindscroll="scroll" scroll-top="{{scrollTop}}" bindscrolltolower="getMore" >
+ 
+ <view class="article-main-box">
+	<view class="article-container">
+	   <view class="article-item"  wx:for="{{ artiles }}" wx:for-item="artile" wx:key="artile.id"  data-id='{{artile.id}}'  data-title ="{{artile.title}}" bindtap="goArticleDetail">
+		   <view class="pic">
+		   	  <image class="article-img" src="{{artile.placeholder_img}}" mode="scaleToFill"></image>
+		   </view>
 		   <view class="publish-date">	
-		   	  <text class="time top">22</text>
-		   	  <text class="time">六月</text>	  	
+		   	  <text class="time top">{{tools.formatDate(artile.creat_date)[0]}}</text>
+		   	  <text class="time">{{tools.formatDate(artile.creat_date)[1]}}</text>	  	
 		   </view>
 		      
 		  <view class="title">
-		  	 {{item.title}}
+		  	 {{artile.title}}
 		  </view>
 
 		  <view class="tips">
-		  	 {{item.content}}
+		  	 {{artile.content}}
 		  </view>
 		   	  
-		  <view class="tag">web前端</view>
+		  <view class="tag">{{tools.formatTag(artile.type)}}</view>
 	  </view>
 
 	</view>
 </view>
+
+<view class="widget-goTop" bindtap="goTop" wx:if="{{ floorstatus }}">
+  <view class="gotop-wrap">
+    <view class="icon icon-top"></view> <view>顶部</view>
+  </view>
+</view>
+
+<template is="loading"/>
+
+</scroll-view>
+
+

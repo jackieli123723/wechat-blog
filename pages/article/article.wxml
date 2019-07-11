@@ -1,0 +1,33 @@
+<wxs src='./../tools.wxs' module='tools'/>
+<import src="../../components/loading/loading.wxml"/>
+
+<view class="article-box">
+  <view class="article-container">
+  	   <image  class="bg" src="{{placeholder_img}}" mode="scaleToFill"
+			></image>
+		<view class="info">
+			<view class="title">
+				<text>{{title}}</text>
+			</view>
+
+			<view class="text">
+				<text>{{tools.formatCreatTime(creat_date)}}</text>
+				<text>{{tools.formatTag(type)}}</text>
+
+			</view>
+
+		    <view class="text">
+				<text>{{comment_count}}评论</text>
+				<text>{{pv}}阅读</text>
+				
+			</view>
+			
+			
+		</view>
+
+		<view class="content">
+			<import src="../../wxParse/wxParse.wxml"/>
+	        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+		</view>
+  </view>
+</view>

@@ -1,0 +1,33 @@
+.back-top {
+  position: fixed;
+  display: block;
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  right: 1em;
+  bottom: 3em;
+  text-align: center;
+  color: #fff;
+  transition: background 0.3s, opacity 0.3s;
+  background: #1da496;
+  background: linear-gradient(to right, #1da496 35%, #25cfbe 100%);
+  background-size: 200% auto;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 1;
+  z-index: 100;
+}
+.back-top:hover {
+  background-position: right center;
+}
+.back-top > i {
+  display: inline-block;
+  line-height: 50px;
+}
+.back-top--hidden {
+  opacity: 1;
+}
+.page-loading {
+  background: center no-repeat;
+  background-size: auto;
+}

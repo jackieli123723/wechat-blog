@@ -1,27 +1,40 @@
+@import "../../components/loading/loading.wxss";
+page{
+  background-color: #fff;
+}
+
 .article-main-box{
 	 
 	  display: flex;
 	  flex-wrap: wrap;
 	  padding: 10rpx 15rpx 0;
-	
+
 	
 	.article-container{
 		flex: 1;
 	    position: relative;
 	    width: 100%;
-	    box-shadow: 0 0 20rpx rgba(0,0,0,.15);
+	    
 	}
 
 	.article-item{
         position: relative;
-		margin-bottom: 10rpx;
+		margin-bottom: 15rpx;
+		box-shadow: 0 0 20rpx rgba(0,0,0,.15);
+		background-color: #fff;
+		transition: box-shadow .3s;
+        line-height: 1.4
+
+  //       &:hover {
+		//     box-shadow: 0 0 20rpx rgba(0,0,0,.2)
+		// }
+
 	}
 	.pic{
 		
 		width: 100%;
 		height: auto;
 		.article-img{
-			
 			width: 100%;
 
 		}
@@ -31,7 +44,8 @@
 		width: 50px;
 		height: 50px;
 		border-radius:25px;
-		background:rgba(0,0,0,0.5);
+		background:rgba(64,84,90,.7);
+
 		color:#Fff;
 		position: absolute;
 		top:10rpx;
@@ -87,3 +101,26 @@
 
 }
 
+/* 返回顶部 */
+.widget-goTop { 
+  position: fixed; 
+  bottom: 125px; 
+  right: 15px; 
+  background: rgba(0,0,0,0.48); 
+  border-radius: 50%; 
+  overflow: hidden; 
+  z-index: 500; 
+} 
+.widget-goTop .gotop-wrap { 
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  width: 50px; 
+  height: 50px; 
+  font-size: 12px; 
+  color: #fff; 
+  border-radius: 50%; 
+  background-color: rgba(0,0,0,0.8); 
+  -webkit-background-size: 50px auto; 
+}
