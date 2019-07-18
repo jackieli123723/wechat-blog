@@ -1,0 +1,15 @@
+<template name="search">
+	<view class="search-container">
+		<view class="header">
+			<text class="text">搜索文章</text>
+		</view>
+		<view class="search">
+			<view class="box">
+				<input placeholder="输入关键字搜索" class="txt"></input>
+				<view class="btn"  bindtap="goHome">
+					<image class="img" src="../../static/images/search.png"></image>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>

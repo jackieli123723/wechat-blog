@@ -1,0 +1,73 @@
+.comment-box {
+  font-size: 16px;
+  padding: 16rpx;
+}
+.comment-box .wrap {
+  border: 1px solid #f0f0f0;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  position: relative;
+  padding: 10px;
+}
+.comment-box .header {
+  box-sizing: border-box;
+  line-height: 2;
+  color: #555;
+}
+.comment-box .header .vinput {
+  border: none;
+  resize: none;
+  outline: none;
+  padding: 10px 5px;
+  max-width: 100%;
+  font-size: 0.775em;
+  border-bottom: 1px dashed #dedede;
+}
+.comment-box .vedit {
+  position: relative;
+  padding-top: 10px;
+}
+.comment-box .vedit .veditor {
+  width: 100%;
+  display: block;
+  padding-top: 12px;
+  min-height: 8.75em;
+  font-size: 0.875em;
+  background: transparent;
+  resize: vertical;
+  transition: all 0.25s ease;
+  line-height: 2;
+}
+.comment-box .vctrl {
+  font-size: 12px;
+  text-align: right;
+  box-sizing: border-box;
+  line-height: 2;
+  color: #555;
+}
+.comment-box .vctrl .vemoji-btn {
+  padding: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.comment-box .vemojis {
+  display: -none;
+  font-size: 18px;
+  text-align: justify;
+  max-height: 145px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  -webkit-box-shadow: 0 0 1px #f0f0f0;
+  box-shadow: 0 0 1px #f0f0f0;
+}
+.comment-box .vemojis text {
+  font-style: normal;
+  padding: 7px 0;
+  width: 38px;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+}

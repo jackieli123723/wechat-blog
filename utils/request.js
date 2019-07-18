@@ -42,6 +42,11 @@ const getArticleDetail = (params) => {
   wxRequest(params, `${apiURL}/api/article/detail`);
 };
 
+const getArticleDetailCommentList = (params) => {
+  wxRequest(params, `${apiURL}/api/comment/front/list`);
+};
+
+
 const getCommentList = (params) => {
   wxRequest(params,`${apiURL}/api/comment/list`)
 }
@@ -61,5 +66,6 @@ module.exports = {
   getArticleDetail,
   getCommentList,
   postComment,
-  getSitemapList
+  getSitemapList,
+  getArticleDetailCommentList
 };

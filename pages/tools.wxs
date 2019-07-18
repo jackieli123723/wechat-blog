@@ -51,6 +51,12 @@ var formatCreatTime = function (value){
 }
 
 
+var copyrightTime = function (value){
+    var time = getDate(parseInt(value));
+    var year = time.getFullYear();
+    return year 
+}
+
 var formatTag = function(type) {
     switch (type)
     {
@@ -71,5 +77,6 @@ var formatTag = function(type) {
 module.exports = {
   formatDate: formatDate,
   formatTag: formatTag,
-  formatCreatTime:formatCreatTime
+  formatCreatTime:formatCreatTime,
+  copyrightTime:copyrightTime
 };

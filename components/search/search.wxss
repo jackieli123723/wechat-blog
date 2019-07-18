@@ -1,0 +1,63 @@
+.search-container {
+  padding: 16rpx;
+}
+.search-container .header {
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.0785);
+}
+.search-container .header .text {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 1.4;
+  position: relative;
+}
+.search-container .header .text:after {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #2f2f2d;
+  content: '';
+}
+.search-container .search {
+  margin-top: 24rpx;
+}
+.search-container .search .box {
+  position: relative;
+}
+.search-container .search .box .txt {
+  -webkit-appearance: none;
+  width: 100%;
+  display: block;
+  font-size: 14px;
+  line-height: 40px;
+  height: 40px;
+  padding: 0 40px 0 18px;
+  box-sizing: border-box;
+  color: #313131;
+  border: 1px solid rgba(184, 197, 214, 0.2);
+  border-radius: 2px;
+  outline: 0;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+.search-container .search .box .txt:hover {
+  transition: box-shadow 0.3s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.14);
+}
+.search-container .search .box .btn {
+  position: absolute;
+  z-index: 2;
+  right: 5px;
+  top: 5px;
+  width: 30px;
+  height: 30px;
+}
+.search-container .search .box .btn .img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 5px;
+  top: 5px;
+}

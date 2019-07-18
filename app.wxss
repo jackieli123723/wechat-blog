@@ -1,5 +1,24 @@
+@import "./components/footer/footer.wxss";
+
+
+/*@import "./components/search/search.wxss";
+
+@import "./components/comment/comment.wxss";
+
+
+*/
+
+
+
+/*小程序全局设置样式*/
+page{
+background-color:#fff;
+height:100%;
+}
+
+
 /**app.wxss**/
-.container {
+/*.container {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -8,3 +27,4 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+*/

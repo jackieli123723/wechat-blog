@@ -1,0 +1,65 @@
+.comment-container {
+  padding: 16rpx;
+}
+.comment-container .comment-total {
+  color: #555;
+  font-size: 16px;
+}
+.comment-container .comment-total .strong {
+  font-size: 17px;
+  margin-right: 4px;
+  font-weight: 600;
+}
+.comment-container .comment-list {
+  margin-top: 20px;
+}
+.comment-container .comment-list .comment-item {
+  position: relative;
+}
+.comment-container .comment-list .comment-item .avatar {
+  width: 2.5em;
+  height: 2.5em;
+  float: left;
+  border: 1px solid #f5f5f5;
+  margin-right: 0.7525em;
+  padding: 0.125em;
+}
+.comment-container .comment-list .comment-item .info {
+  overflow: hidden;
+  /*bfc*/
+  padding-bottom: 0.5em;
+  border-bottom: 1px dashed #f5f5f5;
+}
+.comment-container .comment-list .comment-item .info .head {
+  line-height: 1.5;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: #1da496;
+}
+.comment-container .comment-list .comment-item .info .reply-time,
+.comment-container .comment-list .comment-item .info .stars {
+  color: #b3b3b3;
+  font-size: 0.75em;
+  position: relative;
+  margin-top: 2px;
+}
+.comment-container .comment-list .comment-item .info .reply-time .reply,
+.comment-container .comment-list .comment-item .info .stars .reply {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 4px;
+  font-size: 1em;
+  color: #ef2f11;
+}
+.comment-container .comment-list .comment-item .info .content {
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: justify;
+  color: #4a4a4a;
+  font-size: 0.875em;
+  line-height: 2;
+  position: relative;
+  margin-bottom: 0.75em;
+  padding-top: 0.625em;
+}

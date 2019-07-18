@@ -1,0 +1,9 @@
+<template name="footer">
+	 <view class="footer">
+		
+	 <view>Powered by 西门互联</view>
+
+	 <view>Copyright © 2019. All Rights West Gate Reserved</view>
+
+	</view>
+</template>

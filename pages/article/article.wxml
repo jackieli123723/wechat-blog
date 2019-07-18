@@ -1,6 +1,14 @@
 <wxs src='./../tools.wxs' module='tools'/>
 <import src="../../components/loading/loading.wxml"/>
 
+<import src="../../components/footer/footer.wxml"/>
+
+
+<import src="../../components/comment/comment.wxml"/>
+<import src="../../components/comment/commentlist.wxml"/>
+
+
+
 <view class="article-box">
   <view class="article-container">
   	   <image  class="bg" src="{{placeholder_img}}" mode="scaleToFill"
@@ -28,6 +36,23 @@
 		<view class="content">
 			<import src="../../wxParse/wxParse.wxml"/>
 	        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+
 		</view>
+			
+
   </view>
+</view>
+
+<view>
+	<template is="comment"></template>
+</view>
+
+
+<view>
+	<template is="commentlist" data="{{total:commentTotal,list:commentList}}"></template>
+</view>
+
+
+<view>
+	<template is="footer"></template>
 </view>

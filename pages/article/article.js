@@ -14,7 +14,27 @@ Page({
     stars:"",
     type:'',
     id:"",
-    placeholder_img:""
+    placeholder_img:"",
+    commentTotal:0,
+    commentList:[
+     // {
+     //    "content": "[qq_102]",
+     //    "creat_date": "1563445382225",
+     //    "id": "5d3048864fd6125d8b30efe1",
+     //    "stars": 5,
+     //    "username": "niwwce",
+     //    "_id": "5d3048864fd6125d8b30efe1"
+     // },
+     // {
+     //    "content": "[qq_102]",
+     //    "creat_date": "1563445382225",
+     //    "id": "5d3048864fd6125d8b30efe1",
+     //    "stars": 53,
+     //    "username": "nice",
+     //    "_id": "5d3048864fd6125d8b30efe1"
+     // }
+    ],
+    flag:false,
    },
 
   /**
@@ -28,9 +48,17 @@ Page({
     // 	id:options.articleId
     // })
     this.getArticleDetail(options.articleId)
+    this.getArticleDetailCommentList(options.articleId)
     console.log(options.articleId)
     console.log(options.title)
   },
+
+   //隐藏Emoji
+    hideEmoji: function () {
+      this.setData({
+        flag: !this.data.flag
+      })
+    },
 
   getArticleDetail: function(id){
      const self = this;
@@ -58,5 +86,24 @@ Page({
       }
     })
   },
+
+  getArticleDetailCommentList: function(id){
+     const self = this;
+     let data = {
+          articleId:id 
+      }
+
+    request.getArticleDetailCommentList({
+      data,
+      success:(res)=>{
+            self.setData({
+              commentTotal: res.data.data.totalRecords,
+              commentList: res.data.data.list
+            })
+           
+      }
+    })
+     
+  }
 
 })
