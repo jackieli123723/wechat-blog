@@ -298,9 +298,7 @@ view {
 }
 .comment-container .comment-list .comment-item .info .reply-time .reply,
 .comment-container .comment-list .comment-item .info .stars .reply {
-  position: absolute;
-  right: 0;
-  top: 0;
+  float: right;
   padding: 4px;
   font-size: 1em;
   color: #ef2f11;

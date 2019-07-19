@@ -6,6 +6,14 @@
 page {
   background-color: #fff;
 }
+/*lower-threshold 生效*/
+scroll-view {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
 .article-main-box {
   display: flex;
   flex-wrap: wrap;

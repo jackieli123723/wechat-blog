@@ -1,12 +1,8 @@
 <!--home.wxml-->
 <wxs src='./../tools.wxs' module='tools'/>
-
 <import src="../../components/loading/loading.wxml"/>
 
-
-
-<scroll-view scroll-y="true" bindscroll="scroll" scroll-top="{{scrollTop}}" bindscrolltolower="getMore" >
- 
+<scroll-view scroll-y="true" bindscrolltolower="getArticleList" lower-threshold="100" bindscroll="scroll" scroll-top="{{scrollTop}}"  >
  <view class="article-main-box">
 	<view class="article-container">
 	   <view class="article-item"  wx:for="{{ artiles }}" wx:for-item="artile" wx:key="artile.id"  data-id='{{artile.id}}'  data-title ="{{artile.title}}" bindtap="goArticleDetail">
@@ -38,7 +34,7 @@
   </view>
 </view>
 
-<template is="loading"/>
+<template is="loading" data="{{hasMore:hasMore}}"/>
 
 </scroll-view>
 

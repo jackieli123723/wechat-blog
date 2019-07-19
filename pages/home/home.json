@@ -1,5 +1,5 @@
 {
   "usingComponents": {},
   "navigationBarTitleText": "西门互联",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": false
 }

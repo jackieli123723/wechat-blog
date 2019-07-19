@@ -1,3 +1,5 @@
+<wxs src='./../../pages/tools.wxs' module='tools'/>
+
 <template name="commentlist">
   <view class="comment-container">
 	<view class="comment-total">
@@ -9,7 +11,7 @@
 		 	<view class="info">
 		 		 <view class="head">{{comment.username}}</view>
 		 		 <view class="reply-time">
-		 		 	<text class="time">{{comment.creat_date}}</text>
+		 		 	<text class="time">{{tools.formatCreatTime(comment.creat_date)}}</text>
                     <text class="reply">回复</text>
 		 		 </view> 
 		 		 <view class="stars">评分 {{comment.stars}}星</view>

@@ -1,7 +1,6 @@
 //home.js
 const util = require('../../utils/util.js')
 const request = require('../../utils/request.js');
-
 Page({
   data: {
     scrollTop: 0,
@@ -10,33 +9,62 @@ Page({
     title: '',
     type: 0,
     page: 1,
-    pageSize: 9,
-    loading: false
+    pageSize: 10,
+    pages:-1,
+    loading: false,
+    total:-1,
+    hasMore:true
+
   },
   onLoad: function () {
     this.getArticleList()
   },
-  // onPullDownRefresh() {
-  //   this.loadMore(null, true);
-  // },
+  onPullDownRefresh(e) {
+    console.log(e)
+    this.getArticleList();
+  },
    //获取文章列表
-  getArticleList: function (){
+  getArticleList: function (e,needRefresh){
     const self = this;
+
+    if(self.data.total == self.data.artiles.length){
+       self.setData({
+         hasMore:false
+       })
+       return
+     }
+
+    let data = {
+          title: self.data.title,
+          type: self.data.type,
+          page: self.data.page++,
+          pageSize: self.data.pageSize,
+    }
+
     request.getArticleList({
+      data,
       success:(res)=>{
-           console.log( res.data.data.list)
-            let artiles = res.data.data.list;
+          if(res.data.code == 200){
+               // console.log( res.data.data.list)
+              let artiles = res.data.data.list;
 
-            //处理富文本
-            artiles.forEach((artile) => {
-              let item = artile;
-              item.content = item.content.replace(/<[^>]+>/g,'');
-              return item;
-            });
+              //处理富文本
+              artiles.forEach((artile) => {
+                let item = artile;
+                item.content = item.content.replace(/<[^>]+>/g,'');
+                return item;
+              });
 
-            self.setData({
-              artiles: artiles
-            })
+              let concatlist = self.data.artiles.concat(artiles)
+
+              self.setData({
+                artiles: concatlist,
+                pages:res.data.data.pages,
+                total:res.data.data.totalRecords
+                
+              })
+          }
+
       }
     })
   },
@@ -66,9 +94,6 @@ Page({
         floorstatus: false
       });
     }
-  },
-  getMore: function() {
-    this.getArticleList()
   },
 
   // getArticleList: function () {
@@ -104,7 +129,5 @@ Page({
   //       }
   //   })
   // },
-
-
-
+  
 })

@@ -47,10 +47,13 @@ Page({
     // this.setData({
     // 	id:options.articleId
     // })
-    this.getArticleDetail(options.articleId)
-    this.getArticleDetailCommentList(options.articleId)
-    console.log(options.articleId)
-    console.log(options.title)
+    
+    // this.getArticleDetail(options.articleId)
+    // this.getArticleDetailCommentList(options.articleId)
+
+    this.getArticleDetail('5d287ad94fd6125d8b30efe0')
+    this.getArticleDetailCommentList('5d287ad94fd6125d8b30efe0')
+
   },
 
    //隐藏Emoji

@@ -1,5 +1,6 @@
 <template name="loading">
   <view class="loading">
-    正在加载...
+    <view wx:if="{{hasMore}}">正在加载... </view>
+    <view wx:else>已加载全部</view>
   </view>
 </template>
