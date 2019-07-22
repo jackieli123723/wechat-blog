@@ -2,18 +2,30 @@
 	<view class="comment-box">
 		<view class="wrap">
 			<view class="header">
-				<input placeholder="昵称" class="vnick vinput" />
-				<input placeholder="邮箱" class="vmail vinput" />
-				<input placeholder="网址(http://)" class="vlink vinput"  />
+				<input placeholder="昵称" class="vnick vinput" type="text"  bindinput="bindKeyInputUserName" value="{{username}}" />
+				<input placeholder="邮箱" class="vmail vinput" type="text" bindinput="bindKeyInputEmail" value="{{email}}" />
+				<input placeholder="网址(http://)" class="vlink vinput" type="text" bindinput="bindKeyInputWebsite" value="{{website}}" />
 			</view>
+
+			<view class="header">
+			     <text class="info-text">评分</text>
+			     <view class="stars">
+		           <block wx:for="{{[1, 2, 3, 4, 5]}}" wx:key="{{index}}">
+					  <text class="item active" >{{item}}</text>
+				   </block>				
+		        </view>
+			</view>
+			 
 			<view class="vedit">
-				<textarea id="veditor"  class="veditor vinput" placeholder="请先输入昵称及邮箱，邮箱将用作邮件提醒" ></textarea>
+				<textarea id="veditor" bindinput="bindKeyInputContent" value="{{content}}" maxlength="-1" class="veditor vinput" placeholder="请先输入昵称及邮箱，邮箱将用作邮件提醒" ></textarea>
 
 				<view class="vctrl">
-				   <text class="vemoji-btn" bindtap="hideEmoji">表情</text>
+				   <text class="vemoji-btn" bindtap="showEmoji">表情</text>
 				</view>
+
+			 <block wx:if="{{flag}}">
 			 
-			 <scroll-view scroll-y style="height:200px;" wx:if="{{flag}}">
+			 <scroll-view scroll-y style="height:200px;" >
 				<view class="vemojis">
 					<text name="grinning" title="grinning">
 						😀
@@ -364,7 +376,8 @@
 						®️
 					</text>
 				</view>
-				</scroll-view>
+			</scroll-view>
+			 </block>
 
 
 			</view>

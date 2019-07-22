@@ -34,15 +34,56 @@ Page({
      //    "_id": "5d3048864fd6125d8b30efe1"
      // }
     ],
+
     flag:false,
+    username: '3',
+    email: "45@QQ.COM",
+    website:"66.COM",
+    stars:5,
+    content:'67',
+    page:1,
+    pageSize:10
    },
+
+   bindKeyInputUserName: function(e) {
+    this.setData({
+      username: e.detail.value
+    })
+  },
+
+   bindKeyInputEmail: function(e) {
+    this.setData({
+      email: e.detail.value
+    })
+  },
+
+   bindKeyInputWebsite: function(e) {
+    this.setData({
+      website: e.detail.value
+    })
+  },
+  bindKeyInputContent: function(e) {
+    this.setData({
+      content: e.detail.value
+    })
+  },
+  
+
+   showEmoji:  function() {
+      console.log(33)
+      var self = this
+      this.setData({
+        flag: !self.data.flag
+      })
+    },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     wx.setNavigationBarTitle({
-      title: options.title
+      title: options.title || '',
+      username:options.username
     })
     // this.setData({
     // 	id:options.articleId
@@ -107,6 +148,22 @@ Page({
       }
     })
      
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: (res) => {
+    return {
+      title: '文章详情',
+      path: '/pages/article/article',
+      success: (res) => {
+        console.log("转发成功", res);
+      },
+      fail: (res) => {
+        console.log("转发失败", res);
+      }
+    }
   }
 
 })

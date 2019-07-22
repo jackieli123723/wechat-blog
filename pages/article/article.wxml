@@ -1,16 +1,11 @@
 <wxs src='./../tools.wxs' module='tools'/>
 <import src="../../components/loading/loading.wxml"/>
-
 <import src="../../components/footer/footer.wxml"/>
-
-
 <import src="../../components/comment/comment.wxml"/>
 <import src="../../components/comment/commentlist.wxml"/>
-
-
-
-<view class="article-box">
-  <view class="article-container">
+<import src="../../components/pagination/pagination.wxml"/>
+<view class="article-box" wx:if="{{detailArticle}}">
+  <view class="article-container" >
   	   <image  class="bg" src="{{placeholder_img}}" mode="scaleToFill"
 			></image>
 		<view class="info">
@@ -39,12 +34,17 @@
 
 		</view>
 			
-
   </view>
+
 </view>
 
+<view class="page-loading" wx:else>
+		<image class="loading" src="../../static/images/loader.gif"></image>
+</view>
+
+
 <view>
-	<template is="comment"></template>
+	<template is="comment" data="{{flag:flag,username:username,email:email,website:website,stars:stars,content:content}}"></template>
 </view>
 
 
@@ -52,6 +52,10 @@
 	<template is="commentlist" data="{{total:commentTotal,list:commentList}}"></template>
 </view>
 
+
+<view>
+	<template is="pagination"></template>
+</view>
 
 <view>
 	<template is="footer"></template>

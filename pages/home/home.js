@@ -95,6 +95,29 @@ Page({
       });
     }
   },
+  
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+    /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: (res) => {
+    return {
+      title: '西门互联博客',
+      path: '/pages/home/home',
+      success: (res) => {
+        console.log("转发成功", res);
+      },
+      fail: (res) => {
+        console.log("转发失败", res);
+      }
+    }
+  }
 
   // getArticleList: function () {
   //     const self = this;
