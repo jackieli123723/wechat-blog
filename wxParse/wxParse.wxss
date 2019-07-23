@@ -23,6 +23,7 @@ view {
   display: inline;
   margin: 0;
   padding: 0;
+  line-height: 1.8;
 }
 /*//标题 */
 .wxParse-div {

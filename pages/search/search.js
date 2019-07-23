@@ -3,8 +3,13 @@ Page({
 
 	},
 	goHome: function(e){
-      wx.navigateTo({
-      url: '../home/home'
-    })
+		  // console.log(e)
+	      // wx.navigateTo({
+	      //   url: '../home/home'
+	      // })
+
+         wx.switchTab({
+		  url: '../home/home'
+		})
   },
 })

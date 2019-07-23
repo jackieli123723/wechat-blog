@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/article/article",
     "pages/home/home",
+    "pages/article/article",
     "pages/search/search",
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/about/about",
+    "pages/work/work"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -12,7 +12,38 @@
     "navigationBarTitleText": "西门互联",
     "navigationBarTextStyle": "white"
   },
-
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#4abdcc",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "static/images/home.png",
+        "selectedIconPath": "static/images/home_active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "iconPath": "static/images/expore.png",
+        "selectedIconPath": "static/images/expore_active.png",
+        "text": "搜索"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "iconPath": "static/images/about.png",
+        "selectedIconPath": "static/images/about_active.png",
+        "text": "关于"
+      },
+      {
+        "pagePath": "pages/work/work",
+        "iconPath": "static/images/work.png",
+        "selectedIconPath": "static/images/work_active.png",
+        "text": "作品"
+      }
+    ]
+  },
   "networkTimeout": {
     "request": 10000,
     "downloadFile": 10000

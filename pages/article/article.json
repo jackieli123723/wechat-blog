@@ -1,4 +1,7 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": ""
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "pagination": "../../components/pagination/pagination"
+  }
 }

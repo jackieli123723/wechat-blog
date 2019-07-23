@@ -11,9 +11,8 @@ Page({
     comment_count:0,
     creat_date:"",
     pv:"",
-    stars:"",
     type:'',
-    id:"",
+    id:"5d287ad94fd6125d8b30efe0",
     placeholder_img:"",
     commentTotal:0,
     commentList:[
@@ -36,14 +35,15 @@ Page({
     ],
 
     flag:false,
-    username: '3',
-    email: "45@QQ.COM",
-    website:"66.COM",
-    stars:5,
-    content:'67',
+    username: '',
+    email: "",
+    website:"",
+    starsComment:5,
+    content:'',
     page:1,
-    pageSize:10
-   },
+    pageSize:10,
+    Emoji:["😀", "😃", "😄", "😁", "😆", "😅", "😂", "😊", "😇", "😉", "😌", "😍", "😘", "😗", "😙", "😚", "😋", "😜", "😝", "😛", "😎", "😏", "😒", "😞", "😔", "😟", "😕", "😣", "😖", "😫", "😩", "😠", "😡", "😶", "😐", "😑", "😯", "😦", "😧", "😮", "😲", "😵", "😳", "😱", "😨", "😰", "😢", "😥", "😭", "😓", "😪", "😴", "😷", "😈", "😺", "😸", "😹", "😻", "😼", "😽", "🙀", "😿", "😾", "🐱", "🐭", "🐮", "🐵", "✋", "✊", "✌️", "👆", "👇", "👈", "👉", "👊", "👋", "👏", "👐", "👍", "👎", "👌", "🙏", "👂", "👀", "👃", "👄", "👅", "❤️", "💘", "💖", "⭐️", "✨", "⚡️", "☀️", "☁️", "❄️", "☔️", "☕️", "✈️", "⚓️","⌚️", "☎️", "⌛️", "✉️", "✂️", "✒️", "✏️", "❌", "♻️", "✅", "❎", "Ⓜ️", "ℹ️", "™️", "©️", "®️"],
+  },
 
    bindKeyInputUserName: function(e) {
     this.setData({
@@ -67,7 +67,127 @@ Page({
       content: e.detail.value
     })
   },
-  
+
+  getStars: function(e){
+     let stars = e.currentTarget.dataset.stars;
+      this.setData({
+        starsComment:stars
+      })
+
+  },
+
+  replyTo: function(e){
+     let username = e.currentTarget.dataset.username;
+      this.setData({
+        content:"@"+username
+      })
+  },
+
+  getEmoji: function(e){
+      let emoji = e.currentTarget.dataset.emoji;
+      console.log(emoji)
+      let newContent = this.data.content + emoji
+      this.setData({
+        content:newContent
+      })
+  },
+
+  addComment: function(){
+     const self = this;
+
+
+        if(!self.data.username || !self.data.email || !self.data.website || !self.data.content){
+           wx.showToast({
+            title: '格式有误',
+            icon: 'none',
+            duration: 2000
+          })
+
+          return
+        }
+
+        const isEmail = (email) => {
+          const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g;
+          return email.match(emailRegex) ? true : false;
+        }
+
+        const isURL = (string) => {
+            let protocolAndDomainRE = /^(?:\w+:)?\/\/(\S+)$/;
+            let localhostDomainRE = /^localhost[\:?\d]*(?:[^\:?\d]\S*)?$/
+            let nonLocalhostDomainRE = /^[^\s\.]+\.\S{2,}$/;
+            if (typeof string !== 'string') {
+                return false;
+            }
+
+            let match = string.match(protocolAndDomainRE);
+              if (!match) {
+                return false;
+            }
+
+            let everythingAfterProtocol = match[1];
+              if (!everythingAfterProtocol) {
+                return false;
+            }
+
+            if (localhostDomainRE.test(everythingAfterProtocol) ||
+                  nonLocalhostDomainRE.test(everythingAfterProtocol)) {
+              return true;
+            }
+           return false;
+      }
+
+      if(!isEmail(self.data.email)){
+          wx.showToast({
+            title: '邮箱格式错误',
+            icon: 'none',
+            duration: 2000
+          })
+
+        return
+      }
+      if(!isURL(self.data.website)){
+         wx.showToast({
+            title: '网址格式错误',
+            icon: 'none',
+            duration: 2000
+          })
+
+        return
+      }
+
+     let data = {
+          articleId:self.data.id,
+          username: self.data.username,
+          email: self.data.email,
+          website:self.data.website,
+          stars:self.data.starsComment,
+          content:self.data.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        }
+
+    request.addComment({
+      data,
+      success:(res)=>{
+             if(res.data.code == 200){
+                
+                setTimeout(function(){
+                   self.setData({
+                      username: '',
+                      email: '',
+                      website:'',
+                      starsComment:5,
+                      content:''
+                   })
+                   self.getArticleDetailCommentList(self.data.id)
+
+                },300)  
+               
+             }
+
+      }
+    })
+
+  },
+
 
    showEmoji:  function() {
       console.log(33)
@@ -85,15 +205,15 @@ Page({
       title: options.title || '',
       username:options.username
     })
-    // this.setData({
-    // 	id:options.articleId
-    // })
+    this.setData({
+    	id:options.articleId || '5d287ad94fd6125d8b30efe0'
+    })
     
     // this.getArticleDetail(options.articleId)
     // this.getArticleDetailCommentList(options.articleId)
 
-    this.getArticleDetail('5d287ad94fd6125d8b30efe0')
-    this.getArticleDetailCommentList('5d287ad94fd6125d8b30efe0')
+    this.getArticleDetail(options.articleId || '5d287ad94fd6125d8b30efe0')
+    this.getArticleDetailCommentList(options.articleId || '5d287ad94fd6125d8b30efe0')
 
   },
 

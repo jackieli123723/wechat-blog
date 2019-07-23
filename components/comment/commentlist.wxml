@@ -7,12 +7,13 @@
 	</view>
 	<view class="comment-list">
 		 <view class="comment-item"  wx:for="{{ list }}" wx:for-item="comment" wx:key="comment" >
-		 	<image class="avatar" src="https://gravatar.loli.net/avatar/d41d8cd98f00b204e9800998ecf8427e?d=mp&v=1.3.9" ></image>
+		 	<!-- <image class="avatar" src="../../static/images/avatar{{index+1}}.png" ></image> -->
+		 	<image class="avatar" src="../../static/images/avatar1.png" ></image>
 		 	<view class="info">
 		 		 <view class="head">{{comment.username}}</view>
 		 		 <view class="reply-time">
 		 		 	<text class="time">{{tools.formatCreatTime(comment.creat_date)}}</text>
-                    <text class="reply">回复</text>
+                    <text class="reply" data-username="{{comment.username}}" bindtap="replyTo">回复</text>
 		 		 </view> 
 		 		 <view class="stars">评分 {{comment.stars}}星</view>
 		 		 <view class="content">{{comment.content}}</view>

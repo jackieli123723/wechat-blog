@@ -1,8 +1,12 @@
 <!--home.wxml-->
 <wxs src='./../tools.wxs' module='tools'/>
 <import src="../../components/loading/loading.wxml"/>
+<import src="../../components/nav/nav.wxml"/>
+
+<template is="nav" data="{{navData:navData,type:type}}" />
 
 <scroll-view scroll-y="true" bindscrolltolower="getArticleList" lower-threshold="100" bindscroll="scroll" scroll-top="{{scrollTop}}"  >
+
  <view class="article-main-box">
 	<view class="article-container">
 	   <view class="article-item"  wx:for="{{ artiles }}" wx:for-item="artile" wx:key="artile.id"  data-id='{{artile.id}}'  data-title ="{{artile.title}}" bindtap="goArticleDetail">

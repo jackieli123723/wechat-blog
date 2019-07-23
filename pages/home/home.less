@@ -1,31 +1,30 @@
 @import "../../components/loading/loading.wxss";
+@import "../../components/nav/nav.wxss"; 
 page{
   background-color: #fff;
 }
 
-/*lower-threshold 生效*/
+/*lower-threshold 生效*/ 
 scroll-view{
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  top: 0;
+  top: 31px; 
 }
-
-
-
+ 
 .article-main-box{
 	 
 	  display: flex;
 	  flex-wrap: wrap;
 	  padding: 10rpx 15rpx 0;
 
-	
+	 
 	.article-container{
 		flex: 1;
-	    position: relative;
+	    position: relative; 
 	    width: 100%;
-	    
+	     
 	}
 
 	.article-item{
@@ -42,14 +41,16 @@ scroll-view{
 
 	}
 	.pic{
-		
+		position: relative;
 		width: 100%;
 		height: auto;
 		.article-img{
 			width: 100%;
-
+             background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
 		}
+
 	}
+
 
 	.publish-date{
 		width: 50px;
@@ -111,16 +112,16 @@ scroll-view{
 
 
 }
-
+ 
 /* 返回顶部 */
 .widget-goTop { 
   position: fixed; 
-  bottom: 125px; 
+  bottom: 35px; 
   right: 15px; 
   background: rgba(0,0,0,0.48); 
   border-radius: 50%; 
   overflow: hidden; 
-  z-index: 500; 
+  z-index: 500;  
 } 
 .widget-goTop .gotop-wrap { 
   display:flex;
@@ -134,4 +135,4 @@ scroll-view{
   border-radius: 50%; 
   background-color: rgba(0,0,0,0.8); 
   -webkit-background-size: 50px auto; 
-}
+} 

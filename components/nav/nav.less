@@ -1,0 +1,30 @@
+.header-nav{
+	position: fixed;
+	height: 31px;
+	width: 100%;
+	left: 0;
+	top:0;
+	z-index: 2;
+	background: #fff;
+	overflow-x: auto;
+	display: flex;
+	text-align: center;
+	justify-content:space-between;
+	.nav{
+	font-size: 12px;
+    font-weight: bold;
+    color: rgba(153,153,153,1);
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+    
+    // float:left;
+    flex:1;
+    text-align: center;
+	}
+
+	.nav.active{
+	 border-bottom: 1px solid rgba(0,0,0,1);
+     color: rgba(29,31,35,1);
+	}
+} 

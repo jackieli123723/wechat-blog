@@ -3,7 +3,7 @@
 <import src="../../components/footer/footer.wxml"/>
 <import src="../../components/comment/comment.wxml"/>
 <import src="../../components/comment/commentlist.wxml"/>
-<import src="../../components/pagination/pagination.wxml"/>
+<!-- <import src="../../components/pagination/pagination.wxml"/> -->
 <view class="article-box" wx:if="{{detailArticle}}">
   <view class="article-container" >
   	   <image  class="bg" src="{{placeholder_img}}" mode="scaleToFill"
@@ -20,7 +20,7 @@
 			</view>
 
 		    <view class="text">
-				<text>{{comment_count}}评论</text>
+				<text>{{commentTotal}}评论</text>
 				<text>{{pv}}阅读</text>
 				
 			</view>
@@ -28,7 +28,7 @@
 			
 		</view>
 
-		<view class="content">
+		<view class="content" style="padding-top:20px;">
 			<import src="../../wxParse/wxParse.wxml"/>
 	        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
 
@@ -44,7 +44,7 @@
 
 
 <view>
-	<template is="comment" data="{{flag:flag,username:username,email:email,website:website,stars:stars,content:content}}"></template>
+	<template is="comment" data="{{flag:flag,username:username,email:email,website:website,starsComment:starsComment,content:content,Emoji:Emoji}}"></template>
 </view>
 
 
@@ -54,7 +54,10 @@
 
 
 <view>
-	<template is="pagination"></template>
+	<!-- <template is="pagination"></template> -->
+	<pagination
+     totalPage="{{commentTotal}}"
+	></pagination>
 </view>
 
 <view>

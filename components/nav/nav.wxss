@@ -1,0 +1,27 @@
+.header-nav {
+  position: fixed;
+  height: 31px;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background: #fff;
+  overflow-x: auto;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+.header-nav .nav {
+  font-size: 12px;
+  font-weight: bold;
+  color: #999999;
+  cursor: pointer;
+  height: 30px;
+  line-height: 30px;
+  flex: 1;
+  text-align: center;
+}
+.header-nav .nav.active {
+  border-bottom: 1px solid #000000;
+  color: #1d1f23;
+}

@@ -1,0 +1,11 @@
+<template name="nav">
+    <view class="header-nav">
+		<text class="nav {{item.type == type ?'active':''}} " wx:for="{{navData}}" wx:key="{{itme.name}}" data-type="{{item.type}}" bindtap="changeType">{{item.name}}</text>
+	<!-- 	<text class="nav">web前端</text>
+		<text class="nav">服务端</text>
+		<text class="nav">构建工具</text>
+		<text class="nav">数据库</text>
+		<text class="nav">后端开发</text>
+		<text class="nav">系统架构</text> -->
+	</view>
+</template>

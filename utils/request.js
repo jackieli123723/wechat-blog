@@ -51,6 +51,13 @@ const getCommentList = (params) => {
   wxRequest(params,`${apiURL}/api/comment/list`)
 }
 
+
+const addComment = (params) => {
+  wxRequest(params,`${apiURL}/api/comment/add`)
+
+}
+
+
 const postComment = (params) => {
   wxRequest(params,`${apiURL}/api/comment/add`)
 }
@@ -67,5 +74,6 @@ module.exports = {
   getCommentList,
   postComment,
   getSitemapList,
-  getArticleDetailCommentList
+  getArticleDetailCommentList,
+  addComment
 };

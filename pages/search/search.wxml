@@ -1,9 +1,6 @@
 <import src="../../components/search/search.wxml"/>
-<import src="../../components/comment/comment.wxml"/>
-<import src="../../components/comment/commentlist.wxml"/>
 
 <view>
 	<template is="search"></template>
-	<template is="comment"></template>
-	<template is="commentlist"></template>
+
 </view>

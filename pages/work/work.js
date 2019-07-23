@@ -11,13 +11,13 @@ Page({
   },
   //事件处理函数
   bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+    wx.switchTab({
+      url: '../about/about'
     })
   },
   //事件处理函数
   bindViewHome: function() {
-    wx.navigateTo({
+    wx.switchTab({
       url: '../home/home'
     })
   },

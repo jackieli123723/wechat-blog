@@ -8,16 +8,20 @@
 			</view>
 
 			<view class="header">
-			     <text class="info-text">评分</text>
+			     <text class="info-text" style="font-size:12px;margin-left:5px;">评分</text>
 			     <view class="stars">
 		           <block wx:for="{{[1, 2, 3, 4, 5]}}" wx:key="{{index}}">
-					  <text class="item active" >{{item}}</text>
+					  <text class="item  {{item == starsComment ?'active':''}} " data-stars="{{item}}" bindtap="getStars" >{{item}}</text>
 				   </block>				
 		        </view>
 			</view>
 			 
 			<view class="vedit">
-				<textarea id="veditor" bindinput="bindKeyInputContent" value="{{content}}" maxlength="-1" class="veditor vinput" placeholder="请先输入昵称及邮箱，邮箱将用作邮件提醒" ></textarea>
+				<textarea id="veditor" bindinput="bindKeyInputContent" value="{{content}}" maxlength="-1" class="veditor vinput" placeholder="请先输入昵称及邮箱，邮箱将用作邮件提醒" >
+					
+					  <!--  <cover-view>{{content}}</cover-view> -->
+             
+				</textarea>
 
 				<view class="vctrl">
 				   <text class="vemoji-btn" bindtap="showEmoji">表情</text>
@@ -27,354 +31,10 @@
 			 
 			 <scroll-view scroll-y style="height:200px;" >
 				<view class="vemojis">
-					<text name="grinning" title="grinning">
-						😀
+					<text name="grinning" title="grinning" wx:for="{{Emoji}}" wx:key="{{index}}" data-emoji="{{item}}" bindtap="getEmoji">
+						{{item}}
 					</text>
-					<text name="smiley" title="smiley">
-						😃
-					</text>
-					<text name="smile" title="smile">
-						😄
-					</text>
-					<text name="grin" title="grin">
-						😁
-					</text>
-					<text name="laughing" title="laughing">
-						😆
-					</text>
-					<text name="sweat_smile" title="sweat_smile">
-						😅
-					</text>
-					<text name="joy" title="joy">
-						😂
-					</text>
-					<text name="blush" title="blush">
-						😊
-					</text>
-					<text name="innocent" title="innocent">
-						😇
-					</text>
-					<text name="wink" title="wink">
-						😉
-					</text>
-					<text name="relieved" title="relieved">
-						😌
-					</text>
-					<text name="heart_eyes" title="heart_eyes">
-						😍
-					</text>
-					<text name="kissing_heart" title="kissing_heart">
-						😘
-					</text>
-					<text name="kissing" title="kissing">
-						😗
-					</text>
-					<text name="kissing_smiling_eyes" title="kissing_smiling_eyes">
-						😙
-					</text>
-					<text name="kissing_closed_eyes" title="kissing_closed_eyes">
-						😚
-					</text>
-					<text name="yum" title="yum">
-						😋
-					</text>
-					<text name="stuck_out_tongue_winking_eye" title="stuck_out_tongue_winking_eye">
-						😜
-					</text>
-					<text name="stuck_out_tongue_closed_eyes" title="stuck_out_tongue_closed_eyes">
-						😝
-					</text>
-					<text name="stuck_out_tongue" title="stuck_out_tongue">
-						😛
-					</text>
-					<text name="sunglasses" title="sunglasses">
-						😎
-					</text>
-					<text name="smirk" title="smirk">
-						😏
-					</text>
-					<text name="unamused" title="unamused">
-						😒
-					</text>
-					<text name="disappointed" title="disappointed">
-						😞
-					</text>
-					<text name="pensive" title="pensive">
-						😔
-					</text>
-					<text name="worried" title="worried">
-						😟
-					</text>
-					<text name="confused" title="confused">
-						😕
-					</text>
-					<text name="persevere" title="persevere">
-						😣
-					</text>
-					<text name="confounded" title="confounded">
-						😖
-					</text>
-					<text name="tired_face" title="tired_face">
-						😫
-					</text>
-					<text name="weary" title="weary">
-						😩
-					</text>
-					<text name="angry" title="angry">
-						😠
-					</text>
-					<text name="rage" title="rage">
-						😡
-					</text>
-					<text name="no_mouth" title="no_mouth">
-						😶
-					</text>
-					<text name="neutral_face" title="neutral_face">
-						😐
-					</text>
-					<text name="expressionless" title="expressionless">
-						😑
-					</text>
-					<text name="hushed" title="hushed">
-						😯
-					</text>
-					<text name="frowning" title="frowning">
-						😦
-					</text>
-					<text name="anguished" title="anguished">
-						😧
-					</text>
-					<text name="open_mouth" title="open_mouth">
-						😮
-					</text>
-					<text name="astonished" title="astonished">
-						😲
-					</text>
-					<text name="dizzy_face" title="dizzy_face">
-						😵
-					</text>
-					<text name="flushed" title="flushed">
-						😳
-					</text>
-					<text name="scream" title="scream">
-						😱
-					</text>
-					<text name="fearful" title="fearful">
-						😨
-					</text>
-					<text name="cold_sweat" title="cold_sweat">
-						😰
-					</text>
-					<text name="cry" title="cry">
-						😢
-					</text>
-					<text name="disappointed_relieved" title="disappointed_relieved">
-						😥
-					</text>
-					<text name="sob" title="sob">
-						😭
-					</text>
-					<text name="sweat" title="sweat">
-						😓
-					</text>
-					<text name="sleepy" title="sleepy">
-						😪
-					</text>
-					<text name="sleeping" title="sleeping">
-						😴
-					</text>
-					<text name="mask" title="mask">
-						😷
-					</text>
-					<text name="smiling_imp" title="smiling_imp">
-						😈
-					</text>
-					<text name="smiley_cat" title="smiley_cat">
-						😺
-					</text>
-					<text name="smile_cat" title="smile_cat">
-						😸
-					</text>
-					<text name="joy_cat" title="joy_cat">
-						😹
-					</text>
-					<text name="heart_eyes_cat" title="heart_eyes_cat">
-						😻
-					</text>
-					<text name="smirk_cat" title="smirk_cat">
-						😼
-					</text>
-					<text name="kissing_cat" title="kissing_cat">
-						😽
-					</text>
-					<text name="scream_cat" title="scream_cat">
-						🙀
-					</text>
-					<text name="crying_cat_face" title="crying_cat_face">
-						😿
-					</text>
-					<text name="pouting_cat" title="pouting_cat">
-						😾
-					</text>
-					<text name="cat" title="cat">
-						🐱
-					</text>
-					<text name="mouse" title="mouse">
-						🐭
-					</text>
-					<text name="cow" title="cow">
-						🐮
-					</text>
-					<text name="monkey_face" title="monkey_face">
-						🐵
-					</text>
-					<text name="hand" title="hand">
-						✋
-					</text>
-					<text name="fist" title="fist">
-						✊
-					</text>
-					<text name="v" title="v">
-						✌️
-					</text>
-					<text name="point_up" title="point_up">
-						👆
-					</text>
-					<text name="point_down" title="point_down">
-						👇
-					</text>
-					<text name="point_left" title="point_left">
-						👈
-					</text>
-					<text name="point_right" title="point_right">
-						👉
-					</text>
-					<text name="facepunch" title="facepunch">
-						👊
-					</text>
-					<text name="wave" title="wave">
-						👋
-					</text>
-					<text name="clap" title="clap">
-						👏
-					</text>
-					<text name="open_hands" title="open_hands">
-						👐
-					</text>
-					<text name="+1" title="+1">
-						👍
-					</text>
-					<text name="-1" title="-1">
-						👎
-					</text>
-					<text name="ok_hand" title="ok_hand">
-						👌
-					</text>
-					<text name="pray" title="pray">
-						🙏
-					</text>
-					<text name="ear" title="ear">
-						👂
-					</text>
-					<text name="eyes" title="eyes">
-						👀
-					</text>
-					<text name="nose" title="nose">
-						👃
-					</text>
-					<text name="lips" title="lips">
-						👄
-					</text>
-					<text name="tongue" title="tongue">
-						👅
-					</text>
-					<text name="heart" title="heart">
-						❤️
-					</text>
-					<text name="cupid" title="cupid">
-						💘
-					</text>
-					<text name="sparkling_heart" title="sparkling_heart">
-						💖
-					</text>
-					<text name="star" title="star">
-						⭐️
-					</text>
-					<text name="sparkles" title="sparkles">
-						✨
-					</text>
-					<text name="zap" title="zap">
-						⚡️
-					</text>
-					<text name="sunny" title="sunny">
-						☀️
-					</text>
-					<text name="cloud" title="cloud">
-						☁️
-					</text>
-					<text name="snowflake" title="snowflake">
-						❄️
-					</text>
-					<text name="umbrella" title="umbrella">
-						☔️
-					</text>
-					<text name="coffee" title="coffee">
-						☕️
-					</text>
-					<text name="airplane" title="airplane">
-						✈️
-					</text>
-					<text name="anchor" title="anchor">
-						⚓️
-					</text>
-					<text name="watch" title="watch">
-						⌚️
-					</text>
-					<text name="phone" title="phone">
-						☎️
-					</text>
-					<text name="hourglass" title="hourglass">
-						⌛️
-					</text>
-					<text name="email" title="email">
-						✉️
-					</text>
-					<text name="scissors" title="scissors">
-						✂️
-					</text>
-					<text name="black_nib" title="black_nib">
-						✒️
-					</text>
-					<text name="pencil2" title="pencil2">
-						✏️
-					</text>
-					<text name="x" title="x">
-						❌
-					</text>
-					<text name="recycle" title="recycle">
-						♻️
-					</text>
-					<text name="white_check_mark" title="white_check_mark">
-						✅
-					</text>
-					<text name="negative_squared_cross_mark" title="negative_squared_cross_mark">
-						❎
-					</text>
-					<text name="m" title="m">
-						Ⓜ️
-					</text>
-					<text name="i" title="i">
-						ℹ️
-					</text>
-					<text name="tm" title="tm">
-						™️
-					</text>
-					<text name="copyright" title="copyright">
-						©️
-					</text>
-					<text name="registered" title="registered">
-						®️
-					</text>
+	
 				</view>
 			</scroll-view>
 			 </block>
@@ -382,7 +42,7 @@
 
 			</view>
 			<view class="vcontrol">
-				<text class="btn">评论</text>
+				<text class="btn" bindtap="addComment">评论</text>
 			</view>
 		</view>
 
