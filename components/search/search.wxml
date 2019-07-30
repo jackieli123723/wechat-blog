@@ -3,10 +3,25 @@
 		<view class="header">
 			<text class="text">搜索文章</text>
 		</view>
+
 		<view class="search">
 			<view class="box">
-				<input placeholder="输入关键字搜索" class="txt"></input>
-				<view class="btn"  bindtap="goHome">
+				<input placeholder="输入关键字搜索" bindinput="bindKeyWord" value="{{title}}" class="txt"></input>
+
+				<view class="c-dropdown js-dropdown  {{isOpen ?'is-open':''}} ">  
+				  <view class="c-button c-button--dropdown js-dropdown__current" bindtap="changeOpen">{{name}}</view>
+				  <view class="c-dropdown__list">
+				    <view class="c-dropdown__item" wx:for="{{list}}" wx:key="{{item.name}}" data-name="{{item.name}}" data-type="{{item.type}}" bindtap="changeType">{{item.name}}</view>
+				  <!--   <view class="c-dropdown__item" data-dropdown-value="backbone">web前端</view>
+				    <view class="c-dropdown__item" data-dropdown-value="ember">服务端</view>
+				    <view class="c-dropdown__item" data-dropdown-value="knockout">构建工具</view>
+				    <view class="c-dropdown__item" data-dropdown-value="react">数据库</view>
+				    <view class="c-dropdown__item" data-dropdown-value="react">后端开发</view>
+				    <view class="c-dropdown__item" data-dropdown-value="react">系统架构</view> -->
+				  </view>
+				</view>
+
+				<view class="btn"  bindtap="search">
 					<image class="img" src="../../static/images/search.png"></image>
 				</view>
 			</view>

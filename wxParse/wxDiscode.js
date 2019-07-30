@@ -174,7 +174,7 @@ function strOtherDiscode(str){
     str = str.replace(/&#39;/g, '\'');
     return str;
 }
-
+/*https://www.imahui.com/minapp/993.html*/
 function strMoreDiscode(str){
     str = str.replace(/\r\n/g,"");  
     str = str.replace(/\n/g,"");

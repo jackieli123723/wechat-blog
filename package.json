@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jackieli123723/wechat-blog#readme",
   "dependencies": {
+    "miniprogram-computed": "^2.0.1",
     "wxss-cli": "^1.0.4"
   }
 }

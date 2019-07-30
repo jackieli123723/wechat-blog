@@ -18,6 +18,7 @@ var __emojisBaseSrc = '';
 var __emojis = {};
 var wxDiscode = require('./wxDiscode.js');
 var HTMLParser = require('./htmlparser.js');
+var highlight = require('../hljs/highlight.js');
 // Empty Elements - HTML 5
 var empty = makeMap("area,base,basefont,br,col,frame,hr,img,input,link,meta,param,embed,command,keygen,source,track,wbr");
 // Block Elements - HTML 5
@@ -67,6 +68,7 @@ function html2json(html, bindName) {
     html = removeDOCTYPE(html);
     html = trimHtml(html);
     html = wxDiscode.strDiscode(html);
+    // html = highlight.highlight(html);
     //生成node节点
     var bufArray = [];
     var results = {
@@ -270,6 +272,12 @@ function transEmojiStr(str){
   }
   //这个地方需要调整
   str = str.replace(/\[([^\[\]]+)\]/g,':$1:')
+
+  str = str.replace(/</g, '<');
+  str = str.replace(/>/g, '>');
+  str = str.replace(/&/g, '&');
+
+
   var eReg = new RegExp("[:]");
   var array = str.split(eReg);
   for(var i = 0; i < array.length; i++){

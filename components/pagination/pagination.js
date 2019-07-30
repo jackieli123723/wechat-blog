@@ -34,17 +34,70 @@ Component({
 	properties:{
 		currentPage: { type: Number, required: true }, // 当前所在页数
 	    totalPage:   { type: Number, required: true }, // 一共有多少页
-	    howMuchPageButtons:            { type: Number, default: 5 },     // 会显示几个页码按钮
-	    baseOnCurrentPageButtonOffset: { type: Number, default: 2 },     // 当前页码前后会展示几个页码按钮
-	    chagePageSizeDefault: { type: Number, default: 10 }, // 改变每页显示条数
+	    pageSize:            { type: Number, value: 10 },     // 会显示几个页码按钮
+	    howMuchPageButtons:            { type: Number, value: 5 },     // 会显示几个页码按钮
+	    baseOnCurrentPageButtonOffset: { type: Number, value: 2 },     // 当前页码前后会展示几个页码按钮
+	    chagePageSizeDefault: { type: Number, value: 10 }, // 改变每页显示条数
 	},
 	data:{
-       
+       // defaultPageSize:3,
+       showBunNum:[],
+
 	},
-    methods: {
-	    onLoad: function() {
-	      console.log(this.data.totalPage) // 页面参数 paramA 的值
-	     
+	observers: {
+	    '**': function() {
+	      // 每次 setData 都触发
+	    },
+	},
+	// 生命周期函数，可以为函数，或一个在methods段中定义的方法名
+   attached: function () { },
+   moved: function () { },
+   detached: function () { },
+   lifetimes:{
+   	   ready: function(e) {
+	       console.log(this.data) //初始化 拿到 properties 传递过来的参数和 component自身参数的合集
+	       this.setData({
+	       	//不传参数 就用默认的properties 可以不用传递 默认值属性 写了反而计算错误 注意
+	       	showBunNum:count_start_and_end_page(this.data.currentPage,Math.ceil(this.data.totalPage/this.data.pageSize))
+	       })
+	       console.log(this.data)
 	    }
+   },
+   methods: {
+	  
+	    created: function(){
+
+	    },
+	    //首页
+	    toHeadPage: function(){
+           console.log(this.data) //可以拿到 properties 传递过来的参数和 component自身参数的合集
+	    },
+	    //尾页
+	    toTailPage: function(){
+           console.log(2222)
+	    },
+	    //下一页
+	    toNextPage: function(e){
+          var self = this;
+          var page = self.data.currentPage;
+          console.log('toNextPage',page) //这里的参数不起效果 why? 始终为1
+          self.triggerEvent('changePage', {
+		      page: self.data.currentPage++
+		  })
+		  console.log(this.data)
+	    },
+
+	    //上一页
+	    toPrevPage:function(){
+          console.log('toPrevPage')
+	    },
+	    //分页跳转 传递page 到父节点
+	    changePage: function(e) {
+	    	var page = e.currentTarget.dataset.page;
+		    this.triggerEvent('changePage', {
+		      page: page
+		    })
+		    console.log(this.data)
+		}
    }
 })

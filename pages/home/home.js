@@ -103,15 +103,18 @@ Page({
       }
     })
   },
-   goArticleDetail: function(e) {
-    var article = e.currentTarget.dataset
-    wx.navigateTo({
-      url:`../article/article?articleId=${article.id}&title=${article.title}`
-    })
+  goArticleDetail: function(e) {
+      var article = e.currentTarget.dataset
+      wx.navigateTo({
+        url:`../article/article?articleId=${article.id}&title=${article.title}&stars=${article.stars}`
+      })
   },
   changeType:function(e){
     var self = this
     var type = e.currentTarget.dataset.type
+    if(type == self.data.type){
+      return
+    }
     self.setData({
       type:type
     })

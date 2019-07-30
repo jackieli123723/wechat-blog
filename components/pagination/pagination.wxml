@@ -2,49 +2,43 @@
 	<view class="paginationjs paginationjs-theme-blue">
 		<view class="paginationjs-pages">
 			<view class="ul">
-				<view class="item paginationjs-prev disabled">
+				<view class="item paginationjs-prev disabled" data-page="{{currentPage}}" bindtap="toHeadPage">
+					<view class="number">
+						首页
+					</view>
+				</view>
+				<view class="item paginationjs-prev disabled" data-page="{{currentPage}}" bindtap="toPrevPage">
 					<view class="number">
 						«
 					</view>
 				</view>
-				<view class="item paginationjs-page  J-paginationjs-page active" data-num="1">
-					<view class="number">
-						1
-					</view>
-				</view>
-				<view class="item  paginationjs-page J-paginationjs-page" data-num="2">
-					<view class="number">
-						2
-					</view>
-				</view>
-				<view class="item paginationjs-page J-paginationjs-page" data-num="3">
-					<view class="number">
-						3
-					</view>
-				</view>
-				<view class="item paginationjs-page J-paginationjs-page " data-num="4">
-					<view class="number">
-						4
-					</view>
-				</view>
-				<view class="item paginationjs-page J-paginationjs-page" data-num="5">
-					<view class="number">
-						5
-					</view>
-				</view>
+
 				<view class="item paginationjs-ellipsis disabled">
 					<view class="number">
 						...
 					</view>
 				</view>
-				<view class="item paginationjs-page paginationjs-last J-paginationjs-page" data-num="20">
+
+				<view class="item paginationjs-page  J-paginationjs-page  {{item == currentPage ?'active':''}} "  wx:for="{{showBunNum}}" wx:key="{{item}}" data-page="{{item}}" bindtap="changePage">
 					<view class="number">
-						20
+						{{item}}
 					</view>
 				</view>
-				<view class="item paginationjs-next J-paginationjs-next " data-num="2" title="Next page">
+			
+				<view class="item paginationjs-ellipsis disabled">
+					<view class="number">
+						...
+					</view>
+				</view>
+				
+				<view class="item paginationjs-next J-paginationjs-next " data-page="{{currentPage}}" title="Next page" bindtap="toNextPage">
 					<view class="number">
 					»
+					</view>
+				</view>
+				<view class="item paginationjs-next J-paginationjs-next " data-page="{{currentPage}}" title="Next page" bindtap="toTailPage">
+					<view class="number">
+					尾页
 					</view>
 				</view>
 				

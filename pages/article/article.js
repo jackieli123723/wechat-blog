@@ -39,9 +39,10 @@ Page({
     email: "",
     website:"",
     starsComment:5,
+    stars:'',
     content:'',
     page:1,
-    pageSize:10,
+    pageSize:3,//传递参数分页展示条数 默认10 
     Emoji:["😀", "😃", "😄", "😁", "😆", "😅", "😂", "😊", "😇", "😉", "😌", "😍", "😘", "😗", "😙", "😚", "😋", "😜", "😝", "😛", "😎", "😏", "😒", "😞", "😔", "😟", "😕", "😣", "😖", "😫", "😩", "😠", "😡", "😶", "😐", "😑", "😯", "😦", "😧", "😮", "😲", "😵", "😳", "😱", "😨", "😰", "😢", "😥", "😭", "😓", "😪", "😴", "😷", "😈", "😺", "😸", "😹", "😻", "😼", "😽", "🙀", "😿", "😾", "🐱", "🐭", "🐮", "🐵", "✋", "✊", "✌️", "👆", "👇", "👈", "👉", "👊", "👋", "👏", "👐", "👍", "👎", "👌", "🙏", "👂", "👀", "👃", "👄", "👅", "❤️", "💘", "💖", "⭐️", "✨", "⚡️", "☀️", "☁️", "❄️", "☔️", "☕️", "✈️", "⚓️","⌚️", "☎️", "⌛️", "✉️", "✂️", "✒️", "✏️", "❌", "♻️", "✅", "❎", "Ⓜ️", "ℹ️", "™️", "©️", "®️"],
   },
 
@@ -206,7 +207,8 @@ Page({
       username:options.username
     })
     this.setData({
-    	id:options.articleId || '5d287ad94fd6125d8b30efe0'
+    	id:options.articleId || '5d287ad94fd6125d8b30efe0',
+      stars:options.stars 
     })
     
     // this.getArticleDetail(options.articleId)
@@ -235,15 +237,15 @@ Page({
       success:(res)=>{
            // console.log( res.data.data.content)
             let detailArticle = res.data.data;
+            let conents = detailArticle.content;
              //处理富文本
-            WxParse.wxParse('article', 'html', detailArticle.content, self, 5);
+            WxParse.wxParse('article', 'html', conents, self, 5);
             self.setData({
               detailArticle: res.data.data.content,
               title:res.data.data.title,
               comment_count:res.data.data.comment_count,
               creat_date:res.data.data.creat_date,
               pv:res.data.data.pv,
-              stars:res.data.data.stars,
               type:res.data.data.type,
               placeholder_img:res.data.data.placeholder_img,
             })
@@ -254,6 +256,8 @@ Page({
   getArticleDetailCommentList: function(id){
      const self = this;
      let data = {
+          page:self.data.page,
+          pageSize:self.data.pageSize,
           articleId:id 
       }
 
@@ -269,7 +273,15 @@ Page({
     })
      
   },
+  
+  changePage:function(e){
+     console.log(e.detail)
+     this.setData({
+       page:e.detail.page
+     })
 
+     this.getArticleDetailCommentList(this.data.id)
+  },
   /**
    * 用户点击右上角分享
    */

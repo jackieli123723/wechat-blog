@@ -45,6 +45,7 @@ scroll-view {
   display: flex;
   flex-wrap: wrap;
   padding: 10rpx 15rpx 0;
+  /*image text*/
 }
 .article-main-box .article-container {
   flex: 1;
@@ -117,6 +118,22 @@ scroll-view {
   display: inline-block;
   margin: 8px 0 8px 15px;
   line-height: 1;
+}
+.article-main-box .info {
+  display: inline-block;
+  line-height: 1;
+  padding-left: 10px;
+  font-size: 14px;
+  color: #666;
+  opacity: 0.98;
+}
+.article-main-box .info image {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+.article-main-box .info text {
+  padding: 4px;
 }
 /* 返回顶部 */
 .widget-goTop {

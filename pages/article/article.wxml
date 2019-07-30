@@ -4,6 +4,7 @@
 <import src="../../components/comment/comment.wxml"/>
 <import src="../../components/comment/commentlist.wxml"/>
 <!-- <import src="../../components/pagination/pagination.wxml"/> -->
+
 <view class="article-box" wx:if="{{detailArticle}}">
   <view class="article-container" >
   	   <image  class="bg" src="{{placeholder_img}}" mode="scaleToFill"
@@ -14,14 +15,13 @@
 			</view>
 
 			<view class="text">
-				<text>{{tools.formatCreatTime(creat_date)}}</text>
-				<text>{{tools.formatTag(type)}}</text>
-
+				<view class="info2" ><image  mode="scaleToFill" class="" src="../../static/images/time.png"></image><text>{{tools.formatCreatTime(creat_date)}}</text><text>{{tools.formatTag(type)}}</text></view>
 			</view>
 
 		    <view class="text">
-				<text>{{commentTotal}}评论</text>
-				<text>{{pv}}阅读</text>
+				<view class="info2" ><image  mode="scaleToFill" class="" src="../../static/images/comment.png"></image><text>{{commentTotal}}</text></view>
+				<view class="info2" ><image  mode="scaleToFill" class="" src="../../static/images/eye.png"></image><text>{{pv}}</text></view>
+				<view class="info2" ><image  mode="scaleToFill" class="" src="../../static/images/star.png"></image><text>{{stars}}</text></view>
 				
 			</view>
 			
@@ -53,10 +53,13 @@
 </view>
 
 
-<view>
-	<!-- <template is="pagination"></template> -->
-	<pagination
+<view> 
+	<!-- bindmyevent="onMyEvent" == bind:myevent="onMyEvent" -->
+	<pagination wx:if="{{commentTotal > 0}}"
      totalPage="{{commentTotal}}"
+     currentPage="{{page}}"
+     pageSize="{{pageSize}}"
+     bind:changePage="changePage"
 	></pagination>
 </view>
 

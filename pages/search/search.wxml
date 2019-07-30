@@ -1,6 +1,43 @@
+<wxs src='./../tools.wxs' module='tools'/>
 <import src="../../components/search/search.wxml"/>
-
+<import src="../../components/loading/loading.wxml"/>
 <view>
-	<template is="search"></template>
-
+	<template is="search" data="{{isOpen:isOpen,list:list,name:name,title:title}}"></template>
 </view>
+
+
+<scroll-view scroll-y="true" bindscrolltolower="getArticleList" lower-threshold="100" scroll-top="{{scrollTop}}"  >
+    <view class="result" wx:if="{{total !==-1}}">
+		<view class="inner">找到匹配 <text class="txt">{{title}}</text>的结果<text class="txt">{{total}}</text>条</view>
+	</view>
+	 <view class="article-main-box">
+		<view class="article-container">
+		   <view class="article-item"  wx:for="{{ artiles }}" wx:for-item="artile" wx:key="artile.id"  data-id='{{artile.id}}'  data-title ="{{artile.title}}" data-stars="{{artile.stars}}" bindtap="goArticleDetail">
+			   <view class="pic">
+			   	  <image class="article-img" src="{{artile.placeholder_img}}" mode="scaleToFill"></image>
+			   </view>
+			   <view class="publish-date">	
+			   	  <text class="time top">{{tools.formatDate(artile.creat_date)[0]}}</text>
+			   	  <text class="time">{{tools.formatDate(artile.creat_date)[1]}}</text>	  	
+			   </view>
+			      
+			  <view class="title">
+			  	 {{artile.title}}
+			  </view>
+
+			  <view class="tips">
+			  	 {{artile.content}}
+			  </view>
+			   	  
+			  <view class="tag">{{tools.formatTag(artile.type)}}</view>
+			  <view class="info" ><image  mode="scaleToFill" class="" src="../../static/images/eye.png"></image><text>{{artile.pv}}</text></view>
+			  <view class="info" ><image  mode="scaleToFill" class="" src="../../static/images/comment.png"></image><text>{{artile.comment_count}}</text></view>
+			  <view class="info" ><image  mode="scaleToFill" class="" src="../../static/images/star.png"></image><text>{{artile.stars}}</text></view>
+		  </view>
+
+		</view>
+	   
+	</view>
+	<template is="loading" data="{{hasMore:hasMore}}" wx:if="{{total !==-1 || hasMore == false}}"/>
+
+</scroll-view>
