@@ -1,19 +1,19 @@
-<view id="pagination">
+﻿<view id="pagination">
 	<view class="paginationjs paginationjs-theme-blue">
 		<view class="paginationjs-pages">
 			<view class="ul">
-				<view class="item paginationjs-prev disabled" data-page="{{currentPage}}" bindtap="toHeadPage">
+				<view class="item paginationjs-prev {{headDisabled ?'disabled':''}}" data-page="{{1}}" bindtap="toHeadPage">
 					<view class="number">
 						首页
 					</view>
 				</view>
-				<view class="item paginationjs-prev disabled" data-page="{{currentPage}}" bindtap="toPrevPage">
+				<view class="item paginationjs-prev {{headDisabled ?'disabled':''}}" data-page="{{currentPage-1}}" bindtap="toPrevPage">
 					<view class="number">
 						«
 					</view>
 				</view>
 
-				<view class="item paginationjs-ellipsis disabled">
+				<view class="item paginationjs-ellipsis disabled" wx:if="{{headEllipsisShow}}">
 					<view class="number">
 						...
 					</view>
@@ -25,18 +25,18 @@
 					</view>
 				</view>
 			
-				<view class="item paginationjs-ellipsis disabled">
+				<view class="item paginationjs-ellipsis disabled" wx:if="{{tailEllipsisShow}}">
 					<view class="number">
 						...
 					</view>
 				</view>
 				
-				<view class="item paginationjs-next J-paginationjs-next " data-page="{{currentPage}}" title="Next page" bindtap="toNextPage">
+				<view class="item paginationjs-next J-paginationjs-next {{tailDisabled ?'disabled':''}}" data-page="{{currentPage+1}}" title="Next page" bindtap="toNextPage">
 					<view class="number">
 					»
 					</view>
 				</view>
-				<view class="item paginationjs-next J-paginationjs-next " data-page="{{currentPage}}" title="Next page" bindtap="toTailPage">
+				<view class="item paginationjs-next J-paginationjs-next {{tailDisabled ?'disabled':''}}" data-page="{{endPage}}" title="Next page" bindtap="toTailPage">
 					<view class="number">
 					尾页
 					</view>

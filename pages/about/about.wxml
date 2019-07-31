@@ -1,6 +1,24 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
+<!--about.wxml-->
+<view class="main">
+	<view class="header-box">
+		<view class="center-avatr">
+			<image src="../../static/images/me.png"></image>
+			<view id="info" class="info"><text>西门互联</text></view>
+			<text>WEB前端开发工程师</text>
+		</view>
+	</view>
+
+	<view class="resume">
+		<view class="content">
+			<view class="tit">ABOUT ME</view>
+			<view class="skill">
+		<view class="item">擅长：Node.js Javascript MySQL Mongodb Redis React Vue Angular Linux Centos React Native 小程序 Taro Nuxt Next Koa Express Pm2 Docker</view>
+
+		<view class="item">Github: https://github.com/jackieli123723</view>
+		<view class="item">Website: https://textnuxt.lilidong.cn</view>
+        <view class="item">Email: 380863274@qq.com</view>
+
+		  </view>
+		</view>
+	</view>
 </view>

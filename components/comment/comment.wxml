@@ -15,9 +15,9 @@
 				   </block>				
 		        </view>
 			</view>
-			 
+			<!--  解决微信小程序placeholder文字”悬浮“问题 -->
 			<view class="vedit">
-				<textarea id="veditor" bindinput="bindKeyInputContent" value="{{content}}" maxlength="-1" class="veditor vinput" placeholder="请先输入昵称及邮箱，邮箱将用作邮件提醒" >
+				<textarea id="veditor" placeholder-style="color: transparent {{!content ? 'color: transparent' :'' }}"  bindinput="bindKeyInputContent" value="{{content}}" maxlength="-1" class="veditor vinput" placeholder="请先输入昵称及邮箱，邮箱将用作邮件提醒" >
 					
 					  <!--  <cover-view>{{content}}</cover-view> -->
              

@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/home/home",
-    "pages/article/article",
+    "pages/work/work",
     "pages/about/about",
     "pages/search/search",
-    "pages/work/work"
+    "pages/home/home",
+    "pages/article/article"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -45,8 +45,8 @@
     ]
   },
   "networkTimeout": {
-    "request": 10000,
-    "downloadFile": 10000
+    "request": 100000,
+    "downloadFile": 100000
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -1,16 +1,121 @@
-<!--index.wxml-->
+<!--work.wxml-->
+
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view class="nav-tab">
+        <view class="tab">
+          <view class="item  first  {{tabIndex == 0? 'active':''}}" data-index="{{0}}" bindtap="changeTab">工作内容</view>
+          <view class="item  end {{tabIndex == 1? 'active':''}}" data-index="{{1}}" bindtap="changeTab">学习技能</view>
+        </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+  <view class="panel">
+      <view class="title">{{text}}</view> 
+   
+     <block wx:if="{{tabIndex == 0}}">
+      <view class="list">
+         <view class="item">
+             <view class="img">
+               <image src="../../static/images/data.png" mode="'scaleToFill'"></image>
+             </view>
+             <view class="name">
+               数据平台
+             </view>
+             <view class="skill">
+               技术栈：FIS+Node+Java
+             </view>
+         </view>
+      </view> 
+
+
+    <view class="list">
+         <view class="item">
+             <view class="img">
+               <image src="../../static/images/mall.png" mode="'scaleToFill'"></image>
+             </view>
+             <view class="name">
+               道具商城
+             </view>
+             <view class="skill">
+               技术栈：Vue+Node+Pm2+Docker+Koa+Mysql
+             </view>
+         </view>
+      </view> 
+
+      <view class="list">
+         <view class="item">
+             <view class="img">
+               <image src="../../static/images/server.png" mode="'scaleToFill'"></image>
+             </view>
+             <view class="name">
+               通用官网SSR
+             </view>
+             <view class="skill">
+               技术栈：Nuxt+Node+Pm2+Docker+Koa
+             </view>
+         </view>
+      </view> 
+
+     <view class="list">
+         <view class="item">
+             <view class="img">
+               <image src="../../static/images/kefu.png" mode="'scaleToFill'"></image>
+             </view>
+             <view class="name">
+               客服系统
+             </view>
+             <view class="skill">
+               技术栈：Vue+Node+Pm2+Docker
+             </view>
+         </view>
+      </view> 
+
+      </block>
+
+      <block wx:else>
+        <view class="list">
+           <view class="item">
+               <view class="img">
+                 <image src="../../static/images/wechat.png" mode="'scaleToFill'"></image>
+               </view>
+               <view class="name">
+                 本站点小程序
+               </view>
+               <view class="skill">
+                 技术栈：微信小程序
+               </view>
+           </view>
+        </view> 
+        <view class="list">
+           <view class="item">
+               <view class="img">
+                 <image src="../../static/images/vue.png" mode="'scaleToFill'"></image>
+               </view>
+               <view class="name">
+                 Nuxt博客系统
+               </view>
+               <view class="skill">
+                 技术栈：Node+Pm2+Docker+Express+Mongodb
+               </view>
+           </view>
+        </view> 
+         <view class="list">
+           <view class="item">
+               <view class="img">
+                 <image src="../../static/images/spider.png" mode="'scaleToFill'"></image>
+               </view>
+               <view class="name">
+                 爬虫系统
+               </view>
+               <view class="skill">
+                 技术栈：Node+Pm2+Docker+Express+Mongodb
+               </view>
+           </view>
+        </view> 
+      </block>
+
+
+  
+
   </view>
-  <view>
-    <text bindtap="bindViewHome">go home</text>
-  </view>
+
 </view>

@@ -1,21 +1,81 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+page {
+  background-color: #f5f5f5;
+  height: 100%;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.container {
+  padding: 15rpx;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.container .nav-tab {
+  background: #fff;
+  height: 50px;
+  border-radius: 50px;
+  margin-bottom: 15px;
 }
-
-.usermotto {
-  margin-top: 200px;
+.container .nav-tab .tab {
+  height: 50px;
+}
+.container .nav-tab .tab .item {
+  height: 50px;
+  line-height: 50px;
+  width: 50%;
+  display: inline-block;
+  text-align: center;
+  color: #000;
+  font-size: 15px;
+}
+.container .nav-tab .tab .item.first {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+.container .nav-tab .tab .item.end {
+  border-top-right-radius: 28px;
+  border-bottom-right-radius: 28px;
+}
+.container .nav-tab .tab .item.active {
+  background: #4abdcc;
+  color: #fff;
+}
+.container .panel .title {
+  border-left: 4px solid #4abdcc;
+  box-shadow: 0 2px 2px rgba(84, 48, 132, 0);
+  padding: 8px 12px;
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 2px;
+  background: #f2f2f2;
+}
+.container .panel .list {
+  margin-bottom: 15rpx;
+}
+.container .panel .list .item .img {
+  width: 100%;
+  height: auto;
+  background-image: linear-gradient(45deg, #000000, #383838);
+  border-radius: 4px;
+  text-align: center;
+}
+.container .panel .list .item .img image {
+  margin: 0 auto;
+  height: 140px;
+  width: 140px;
+}
+.container .panel .list .item .name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #171717;
+  padding: 4px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.container .panel .list .item .skill {
+  font-size: 14px;
+  font-weight: 500;
+  color: #a0a0a0;
+  padding-bottom: 4px ;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

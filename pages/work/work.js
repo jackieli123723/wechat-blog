@@ -7,7 +7,9 @@ Page({
     motto: '西门互联小程序博客',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    tabIndex:0,
+    text:'工作开发作品列表',
   },
   //事件处理函数
   bindViewTap: function() {
@@ -55,6 +57,13 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  changeTab: function(e){
+    var index = e.currentTarget.dataset.index
+    this.setData({
+      tabIndex:index,
+      text:index == 0 ? '工作开发作品列表' :'学习成果'
     })
   }
 })

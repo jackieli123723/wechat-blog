@@ -27,8 +27,6 @@
   return result; // 返回一个区间数组，供生成区间页码按钮
 }
 
-
-
 Component({
 	behaviors: [],
 	properties:{
@@ -40,14 +38,14 @@ Component({
 	    chagePageSizeDefault: { type: Number, value: 10 }, // 改变每页显示条数
 	},
 	data:{
-       // defaultPageSize:3,
        showBunNum:[],
-
+	   headDisabled:true,//首尾按钮是否禁用
+	   tailDisabled:false,//尾巴尾按钮是否禁用
+	   headEllipsisShow:false,//首尾省略号是否显示
+	   tailEllipsisShow:false
 	},
 	observers: {
-	    '**': function() {
-	      // 每次 setData 都触发
-	    },
+
 	},
 	// 生命周期函数，可以为函数，或一个在methods段中定义的方法名
    attached: function () { },
@@ -55,49 +53,91 @@ Component({
    detached: function () { },
    lifetimes:{
    	   ready: function(e) {
-	       console.log(this.data) //初始化 拿到 properties 传递过来的参数和 component自身参数的合集
 	       this.setData({
+	       	//必须初始化这三个参数
 	       	//不传参数 就用默认的properties 可以不用传递 默认值属性 写了反而计算错误 注意
-	       	showBunNum:count_start_and_end_page(this.data.currentPage,Math.ceil(this.data.totalPage/this.data.pageSize))
+			   showBunNum:count_start_and_end_page(this.data.currentPage, Math.ceil(this.data.totalPage/this.data.pageSize),
+                                      this.data.howMuchPageButtons,
+                                      this.data.baseOnCurrentPageButtonOffset),
+
+			    endPage:Math.ceil(this.data.totalPage/this.data.pageSize),
+			    tailDisabled:!(this.data.currentPage < Math.ceil(this.data.totalPage/this.data.pageSize))
+
 	       })
-	       console.log(this.data)
+	      
 	    }
    },
    methods: {
-	  
-	    created: function(){
-
-	    },
+        reset(){
+        	this.setData({
+        		endPage:Math.ceil(this.data.totalPage/this.data.pageSize),
+        		showBunNum:count_start_and_end_page(this.data.currentPage, Math.ceil(this.data.totalPage/this.data.pageSize),
+                                      this.data.howMuchPageButtons,
+                                      this.data.baseOnCurrentPageButtonOffset),
+        		headDisabled:!(this.data.currentPage > 1),
+        		tailDisabled:!(this.data.currentPage < Math.ceil(this.data.totalPage/this.data.pageSize)),
+        		headEllipsisShow:((Math.ceil(this.data.totalPage/this.data.pageSize) > this.data.howMuchPageButtons) && (this.data.currentPage > this.data.baseOnCurrentPageButtonOffset + 1)),
+        		tailEllipsisShow:((Math.ceil(this.data.totalPage/this.data.pageSize) > this.data.howMuchPageButtons) && Math.ceil(this.data.totalPage/this.data.pageSize) > (this.data.currentPage + this.data.baseOnCurrentPageButtonOffset))
+        	})
+        
+        },
 	    //首页
-	    toHeadPage: function(){
-           console.log(this.data) //可以拿到 properties 传递过来的参数和 component自身参数的合集
+	    toHeadPage: function(e){
+           var page = e.currentTarget.dataset.page;
+           if(this.data.headDisabled) return
+           this.triggerEvent('changePage', {
+		      page: page
+		   })
+           this.reset()
 	    },
 	    //尾页
-	    toTailPage: function(){
-           console.log(2222)
+	    toTailPage: function(e){
+     
+           var page = e.currentTarget.dataset.page;
+           if(this.data.tailDisabled) return
+           this.triggerEvent('changePage', {
+		      page: page
+		   })
+           this.reset()
+          
 	    },
 	    //下一页
 	    toNextPage: function(e){
-          var self = this;
-          var page = self.data.currentPage;
-          console.log('toNextPage',page) //这里的参数不起效果 why? 始终为1
-          self.triggerEvent('changePage', {
-		      page: self.data.currentPage++
+			
+		   var page = e.currentTarget.dataset.page;
+		   if(page > Math.ceil(this.data.totalPage/this.data.pageSize)){
+			   return
+		   }
+          console.log('toNextPage',page) //这里的参数setData不起效果 why? 始终为1  要用数据绑定 就可以实现
+          this.triggerEvent('changePage', {
+		      page: page
 		  })
+		  this.reset()
 		  console.log(this.data)
 	    },
 
 	    //上一页
-	    toPrevPage:function(){
-          console.log('toPrevPage')
+	    toPrevPage:function(e){
+		  var page = e.currentTarget.dataset.page;
+		  if(page < 1){
+			return
+		  }
+          this.triggerEvent('changePage', {
+		      page: page
+		  })
+		  this.reset()
 	    },
 	    //分页跳转 传递page 到父节点
 	    changePage: function(e) {
 	    	var page = e.currentTarget.dataset.page;
+	    	if(page == this.data.currentPage){
+		      return
+		    }
 		    this.triggerEvent('changePage', {
 		      page: page
-		    })
-		    console.log(this.data)
+			})
+			this.reset()
+			console.log(this.data)
 		}
    }
 })
