@@ -18,6 +18,7 @@ var __emojisBaseSrc = '';
 var __emojis = {};
 var wxDiscode = require('./wxDiscode.js');
 var HTMLParser = require('./htmlparser.js');
+var highlight = require('../hljs/highlight.js');
 // Empty Elements - HTML 5
 var empty = makeMap("area,base,basefont,br,col,frame,hr,img,input,link,meta,param,embed,command,keygen,source,track,wbr");
 // Block Elements - HTML 5
@@ -55,9 +56,10 @@ function removeDOCTYPE(html) {
 
 function trimHtml(html) {
   return html
+        .replace(/\r?\n+/g, '')
         .replace(/<!--.*?-->/ig, '')
         .replace(/\/\*.*?\*\//ig, '')
-        /*.replace(/[ ]+</ig, '<')*/
+        .replace(/[ ]+</ig, '<')
 }
 
 
@@ -66,6 +68,7 @@ function html2json(html, bindName) {
     html = removeDOCTYPE(html);
     html = trimHtml(html);
     html = wxDiscode.strDiscode(html);
+    // html = highlight.highlight(html);
     //生成node节点
     var bufArray = [];
     var results = {
@@ -108,12 +111,14 @@ function html2json(html, bindName) {
                     var name = attr.name;
                     var value = attr.value;
                     if (name == 'class') {
+                        // console.dir(value);
                         //  value = value.join("")
                         node.classStr = value;
                     }
                     // has multi attibutes
                     // make it array of attribute
                     if (name == 'style') {
+                        // console.dir(value);
                         //  value = value.join("")
                         node.styleStr = value;
                     }
@@ -217,11 +222,10 @@ function html2json(html, bindName) {
         },
         chars: function (text) {
             //debug(text);
-            text = text.replace(/&lt;/g, '<');
-            text = text.replace(/&gt;/g, '>');
             var node = {
                 node: 'text',
-                text: text
+                text: text,
+                textArray:transEmojiStr(text)
             };
             
             if (bufArray.length === 0) {
@@ -263,10 +267,17 @@ function transEmojiStr(str){
       var emojiObj = {}
       emojiObj.node = "text";
       emojiObj.text = str;
-      return emojiObj;
+      array = [emojiObj];
+      return array;
   }
   //这个地方需要调整
   str = str.replace(/\[([^\[\]]+)\]/g,':$1:')
+
+  str = str.replace(/</g, '<');
+  str = str.replace(/>/g, '>');
+  str = str.replace(/&/g, '&');
+
+
   var eReg = new RegExp("[:]");
   var array = str.split(eReg);
   for(var i = 0; i < array.length; i++){

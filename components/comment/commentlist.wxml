@@ -1,4 +1,5 @@
 <wxs src='./../../pages/tools.wxs' module='tools'/>
+<import src="./../../wxParse/wxParse.wxml"/>
 
 <template name="commentlist">
   <view class="comment-container">
@@ -8,7 +9,7 @@
 	<view class="comment-list">
 		 <view class="comment-item"  wx:for="{{ list }}" wx:for-item="comment" wx:key="comment" >
 		 	<!-- <image class="avatar" src="../../static/images/avatar{{index+1}}.png" ></image> -->
-		 	<image class="avatar" src="../../static/images/avatar1.png" ></image>
+		 	<image class="avatar" src="{{tools.getFaceImg(comment.username)}}" ></image>
 		 	<view class="info">
 		 		 <view class="head">{{comment.username}}</view>
 		 		 <view class="reply-time">
@@ -16,33 +17,44 @@
                     <text class="reply" data-username="{{comment.username}}" bindtap="replyTo">回复</text>
 		 		 </view> 
 		 		 <view class="stars">评分 {{comment.stars}}星</view>
-		 		 <view class="content">{{comment.content}}</view>
+
+		 		<!-- <view class="content">{{comment.content}} </view> -->
+
+		 		<!-- 分割评论动态图片 图片用image 文本用text 不能实现 
+
+					[
+					  {
+					  isGif:true,
+					  text:http://118.24.30.92:9000/static/img/face/qq/qq_106.gif
+					  },
+					  {
+					  isGif:false,
+					  text:测试1
+					  }
+					]
+		 		-->
+
+		 		<!-- 
+
+		 		js拼接的标签可以渲染到wxml上吗？ 
+				不能实现拼接image 实现  
+
+				正确是  【qq—】 === <img /> === <images></image> 
+
+				用富文本  
+
+		 		   <image src="http://118.24.30.92:9000/static/img/face/qq/qq_106.gif"></image>
+		 		   <image src="http://118.24.30.92:9000/static/img/face/qq/qq_106.gif"></image>
+		 		   <image src="http://118.24.30.92:9000/static/img/face/qq/qq_106.gif"></image>
+		 		   <image src="http://118.24.30.92:9000/static/img/face/qq/qq_106.gif"></image>
+		 		   <image src="http://118.24.30.92:9000/static/img/face/qq/qq_106.gif"></image> -->
+
+		 		 <view class="content">
+						<template is="wxParse" data="{{wxParseData: comment_content[index].nodes}}"/>
+		 		 </view>
 		 	</view>
 		 </view>
-	<!-- 	  <view class="comment-item">
-		 	<image class="avatar" src="https://gravatar.loli.net/avatar/bf6773a81ac8ff72c6e08cbfe6e335d1?d=mp&v=1.3.9" ></image>
-		 	<view class="info">
-		 		 <view class="head">邻居家的耳朵</view>
-		 		 <view class="reply-time">
-		 		 	<text class="time">2019-05-12</text>
-                    <text class="reply">回复</text>
-		 		 </view> 
-		 		 <view class="stars">评分 3星</view>
-		 		 <view class="content">我是评论我是评论我是评论我是评论</view>
-		 	</view>
-		 </view>
-		  <view class="comment-item">
-		 	<image class="avatar" src="https://gravatar.loli.net/avatar/6c5b05ca865cc28ed848de47b9169182?d=mp&v=1.3.9" ></image>
-		 	<view class="info">
-		 		 <view class="head">邻居家的耳朵</view>
-		 		 <view class="reply-time">
-		 		 	<text class="time">2019-05-12</text>
-                    <text class="reply">回复</text>
-		 		 </view> 
-		 		 <view class="stars">评分 3星</view>
-		 		 <view class="content">我是评论我是评论我是评论我是评论</view>
-		 	</view>
-		 </view> -->
+	
 	</view>
   </view>	
 </template>

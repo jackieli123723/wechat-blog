@@ -109,8 +109,8 @@ function strcharacterDiscode(str){
     // str = str.replace(/&lt;/g, '‹');
     // str = str.replace(/&gt;/g, '›');
 
-    /*str = str.replace(/&lt;/g, '<');
-    str = str.replace(/&gt;/g, '>');*/
+    str = str.replace(/&lt;/g, '<');
+    str = str.replace(/&gt;/g, '>');
     str = str.replace(/&#8226;/g, '•');
 
     return str;
@@ -174,12 +174,12 @@ function strOtherDiscode(str){
     str = str.replace(/&#39;/g, '\'');
     return str;
 }
-
+/*https://www.imahui.com/minapp/993.html*/
 function strMoreDiscode(str){
-   /* str = str.replace(/\r\n/g, "<br>");
-    str = str.replace(/\n/g, "<br>");*/
+    str = str.replace(/\r\n/g,"");  
+    str = str.replace(/\n/g,"");
 
-    /*str = str.replace(/code/g,"wxxxcode-style");*/
+    str = str.replace(/code/g,"wxxxcode-style");
     return str;
 }
 
@@ -188,6 +188,7 @@ function strDiscode(str){
     str = strGreeceDiscode(str);
     str = strcharacterDiscode(str);
     str = strOtherDiscode(str);
+    str = strMoreDiscode(str);
     return str;
 }
 function urlToHttpUrl(url,rep){

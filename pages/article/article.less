@@ -1,7 +1,11 @@
 // @import "../../static/css/font.wxss";
 @import "../../wxParse/wxParse.wxss";
+@import '../../hljs/hljs.wxss';
 @import "../../components/pagination/pagination.wxss";
  
+ 
+ 
+
 .info2{
     display:inline-block;
     line-height: 1;
@@ -17,6 +21,17 @@
 
         text{
             padding:4px;
+        }
+
+        text.tag{
+           padding:6px;
+        font-size:14px;
+        color:rgba(255, 255, 255, 0.8);
+        background:rgba(0, 0, 0, 0.7);
+        border-radius:4px;
+        display:inline-block;
+        
+        line-height:1;
         }
 
 
@@ -73,7 +88,7 @@
                         height: 2.5em;
                         float:left;
                         
-                        border: 1px solid #f5f5f5;
+                      
                         margin-right: .7525em;
                         padding: .125em;
                     }
@@ -114,6 +129,12 @@
                             position: relative;
                             margin-bottom: .75em;
                             padding-top: 10px;
+
+                            image{
+                                display: inline-block;
+                                width: 24px;
+                                height: 24px;
+                            }
                         }
 
                     }

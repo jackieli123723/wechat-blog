@@ -70,7 +70,27 @@ var formatTag = function(type) {
     } 
 }
 
-
+function getRandomSafeColor() {
+    var base = ['00','33','66','99','CC','FF'];     //基础色代码
+    var len = base.length;                          //基础色长度
+    var bg = [];                           //返回的结果
+    var random = Math.ceil(Math.random()*215+1);    //获取1-216之间的随机数
+    var res;
+    for(var r = 0; r < len; r++){  
+        for(var g = 0; g < len; g++){  
+            for(var b = 0; b < len; b++){   
+                bg.push(base[r].toString()+base[g].toString()+base[b].toString());
+            }  
+        };  
+    };
+    for(var i=0;i<bg.length;i++){
+        res =  bg[random];
+    }
+    return res;
+}
+var getFaceImg = function (str){
+  return 'http://iph.href.lu/40x40?text='+str.substring(0,1).toUpperCase()+'&fg=fff&bg='+getRandomSafeColor()
+}
 
 //module对象暴露
 
@@ -78,5 +98,6 @@ module.exports = {
   formatDate: formatDate,
   formatTag: formatTag,
   formatCreatTime:formatCreatTime,
-  copyrightTime:copyrightTime
+  copyrightTime:copyrightTime,
+  getFaceImg:getFaceImg
 };

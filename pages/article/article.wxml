@@ -3,9 +3,15 @@
 <import src="../../components/footer/footer.wxml"/>
 <import src="../../components/comment/comment.wxml"/>
 <import src="../../components/comment/commentlist.wxml"/>
-<!-- <import src="../../components/pagination/pagination.wxml"/> -->
+<import src="../../wxParse/wxParse.wxml"/>
 
-<view class="article-box" wx:if="{{detailArticle}}">
+<view wx:if="{{comment_content.length > 0 }}"  style="display:none" >
+    <text>{{comment_content.length}}</text>
+	<template is="wxParse" data="{{wxParseData: comment_content[0].nodes}}"/>
+</view>
+
+<view class="article-box" wx:if="{{detailArticle }}" >
+
   <view class="article-container" >
   	   <image  class="bg" src="{{placeholder_img}}" mode="scaleToFill"
 			></image>
@@ -15,7 +21,7 @@
 			</view>
 
 			<view class="text">
-				<view class="info2" ><image  mode="scaleToFill" class="" src="../../static/images/time.png"></image><text>{{tools.formatCreatTime(creat_date)}}</text><text>{{tools.formatTag(type)}}</text></view>
+				<view class="info2" ><image  mode="scaleToFill" class="" src="../../static/images/time.png"></image><text>{{tools.formatCreatTime(creat_date)}}</text><text class="tag">{{tools.formatTag(type)}}</text></view>
 			</view>
 
 		    <view class="text">
@@ -31,7 +37,6 @@
 		<view class="content" style="padding-top:20px;">
 			<import src="../../wxParse/wxParse.wxml"/>
 	        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
-
 		</view>
 			
   </view>
@@ -42,16 +47,13 @@
 		<image class="loading" src="../../static/images/loader.gif"></image>
 </view>
 
-
 <view>
-	<template is="comment" data="{{flag:flag,username:username,email:email,website:website,starsComment:starsComment,content:content,Emoji:Emoji}}"></template>
+	<template is="comment" data="{{flag:flag,username:username,email:email,website:website,starsComment:starsComment,content:content,title:title,Emoji:Emoji}}"></template>
 </view>
 
-
 <view>
-	<template is="commentlist" data="{{total:commentTotal,list:commentList}}"></template>
+	<template is="commentlist" data="{{total:commentTotal,list:commentList,comment_content:comment_content}}"></template>
 </view>
-
 
 <view> 
 	<!-- bindmyevent="onMyEvent" == bind:myevent="onMyEvent" -->

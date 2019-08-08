@@ -1,5 +1,6 @@
 {
   "usingComponents": {},
   "navigationBarTitleText": "西门互联",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark" 
 }

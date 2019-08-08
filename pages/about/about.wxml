@@ -4,7 +4,7 @@
 		<view class="center-avatr">
 			<image src="../../static/images/me.png"></image>
 			<view id="info" class="info"><text>西门互联</text></view>
-			<text>WEB前端开发工程师</text>
+			<text>四川 | 成都 | WEB前端开发工程师</text>
 		</view>
 	</view>
 
@@ -12,13 +12,44 @@
 		<view class="content">
 			<view class="tit">ABOUT ME</view>
 			<view class="skill">
-		<view class="item">擅长：Node.js Javascript MySQL Mongodb Redis React Vue Angular Linux Centos React Native 小程序 Taro Nuxt Next Koa Express Pm2 Docker</view>
-
-		<view class="item">Github: https://github.com/jackieli123723</view>
-		<view class="item">Website: https://textnuxt.lilidong.cn</view>
-        <view class="item">Email: 380863274@qq.com</view>
-
+				<view class="item">
+				    <view class="head">技能：</view>
+					<text>Node.js</text>
+					<text>Javascript</text>
+					<text>Typescript</text>
+					<text>Webpack</text>
+					<text>Rollup</text>
+					<text>Gulp</text>
+					<text>Vue</text>
+					<text>React</text>
+					<text>Angular</text>
+					<text>HTML5</text>
+					<text>CSS3</text>
+					<text>MySQL</text>
+					<text>Mongodb</text>
+					<text>Redis</text>
+					<text>Linux</text>
+					<text>React Native </text>
+					<text>小程序</text>
+					<text>Weex</text>
+					<text>Taro</text>
+					<text>Nuxt.js</text>
+					<text>Next.js</text>
+					<text>Koa</text>
+					<text>Express</text>
+					<text>Pm2 </text>
+					<text>Docker</text>
+					<text>CI/CD</text>
+					<view class="over"></view>
+				</view>
+				
+				<view class="item">网站: https://textnuxt.lilidong.cn</view>
+		        <view class="item">邮箱: 380863274@qq.com</view>
+		        <view class="item">Github: https://github.com/jackieli123723</view>
 		  </view>
 		</view>
 	</view>
+
+	
+
 </view>

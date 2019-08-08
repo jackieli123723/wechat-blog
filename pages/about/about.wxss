@@ -11,6 +11,7 @@
 }
 .main .header-box .center-avatr {
   text-align: center;
+  color: #757575;
 }
 .main .header-box .center-avatr image {
   width: 100px;
@@ -51,7 +52,109 @@
   bottom: 0%;
   left: 0%;
 }
+.main .resume .content .skill .head {
+  float: left;
+  line-height: 2;
+}
+.main .resume .content .skill .over {
+  clear: both;
+}
 .main .resume .content .skill .item {
   margin-bottom: 12px;
   font-size: 15px;
+}
+.main .resume .content .skill .item text {
+  float: left;
+  margin: 0 5px 5px 0;
+  padding: 4px 6px;
+  border-radius: 3px;
+  color: #fff;
+  background: #000;
+}
+.main .resume .content .skill .item text:nth-child(2) {
+  background: #27ea80;
+}
+.main .resume .content .skill .item text:nth-child(3) {
+  background: #3366FF;
+}
+.main .resume .content .skill .item text:nth-child(4) {
+  background: #ff5473;
+}
+.main .resume .content .skill .item text:nth-child(5) {
+  background: #df27ea;
+}
+.main .resume .content .skill .item text:nth-child(6) {
+  background: #31ac76;
+}
+.main .resume .content .skill .item text:nth-child(7) {
+  background: #ea4563;
+}
+.main .resume .content .skill .item text:nth-child(8) {
+  background: #31a6a0;
+}
+.main .resume .content .skill .item text:nth-child(9) {
+  background: #8e7daa;
+}
+.main .resume .content .skill .item text:nth-child(10) {
+  background: #4fad7b;
+}
+.main .resume .content .skill .item text:nth-child(11) {
+  background: #f99f13;
+}
+.main .resume .content .skill .item text:nth-child(12) {
+  background: #f85200;
+}
+.main .resume .content .skill .item text:nth-child(13) {
+  background: #0099CC;
+}
+.main .resume .content .skill .item text:nth-child(14) {
+  background: #0099CC;
+}
+.main .resume .content .skill .item text:nth-child(15) {
+  background: #99CCFF;
+}
+.main .resume .content .skill .item text:nth-child(16) {
+  background: #99CC33;
+}
+.main .resume .content .skill .item text:nth-child(17) {
+  background: #99CC99;
+}
+.main .resume .content .skill .item text:nth-child(18) {
+  background: #339999;
+}
+.main .resume .content .skill .item text:nth-child(19) {
+  background: #CC6666;
+}
+.main .resume .content .skill .item text:nth-child(20) {
+  background: #6699CC;
+}
+.main .resume .content .skill .item text:nth-child(21) {
+  background: #FF9999;
+}
+.main .resume .content .skill .item text:nth-child(22) {
+  background: #FFCCFF;
+}
+.main .resume .content .skill .item text:nth-child(23) {
+  background: #FF6666;
+}
+.main .resume .content .skill .item text:nth-child(24) {
+  background: #009966;
+}
+.main .resume .content .skill .item text:nth-child(25) {
+  background: #FF9966;
+}
+.main .resume .content .skill .item text:nth-child(26) {
+  background: #FFCC33;
+}
+.main .resume .content .skill .item text:nth-child(27) {
+  background: #FFCC00;
+}
+.main .resume .content .skill .item text:nth-child(28) {
+  background: #663399;
+}
+.main .resume .content .skill .item text:nth-child(29) {
+  background: #333333;
+}
+.main .resume .content .skill .item text:nth-child(30) {
+  background: #9999CC;
 }

@@ -109,6 +109,12 @@ view {
 }
 .wxParse-pre {
   white-space: pre;
+  padding: 20rpx;
+  margin-bottom: 12rpx;
+  border-radius: 5px;
+  background: #282c34;
+  overflow: auto;
+  color: #fff;
 }
 .wxParse-big {
   font-size: 1.17em;
@@ -252,6 +258,72 @@ view {
 .wxParse-figure {
   overflow: hidden;
 }
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #F0F0F0;
+}
+.hljs,
+.hljs-subst {
+  color: #444;
+}
+.hljs-comment {
+  color: #888888;
+}
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold;
+}
+.hljs-type,
+.hljs-string,
+.hljs-number,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #880000;
+}
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold;
+}
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #BC6060;
+}
+.hljs-literal {
+  color: #78A960;
+}
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #397300;
+}
+.hljs-meta {
+  color: #1f7199;
+}
+.hljs-meta-string {
+  color: #4d99bf;
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: bold;
+}
 .paginationjs {
   line-height: 1.6;
   font-family: Marmelad, lucida grande, Arial, hiragino sans gb, Georgia, sans-serif;
@@ -339,6 +411,15 @@ view {
 .info2 text {
   padding: 4px;
 }
+.info2 text.tag {
+  padding: 6px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  display: inline-block;
+  line-height: 1;
+}
 .page-loading {
   position: fixed;
   left: 0;
@@ -383,7 +464,6 @@ view {
   width: 2.5em;
   height: 2.5em;
   float: left;
-  border: 1px solid #f5f5f5;
   margin-right: 0.7525em;
   padding: 0.125em;
 }
@@ -422,6 +502,11 @@ view {
   position: relative;
   margin-bottom: 0.75em;
   padding-top: 10px;
+}
+.comment-container .comment-list .comment-item .info .content image {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
 }
 /*评论*/
 .comment-box {

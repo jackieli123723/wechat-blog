@@ -2,10 +2,46 @@ const app = getApp()
 const util = require('../../utils/util.js')
 const request = require('../../utils/request.js');
 const WxParse = require('../../wxParse/wxParse.js');
+const hljs = require('../../hljs/index.js');
+
+
+
+ // 拆分富文本文章内容中的文字和代码块（以适应前端代码高亮）
+function dismantle(cont) {
+      let dismantleCont = [];
+      while (cont.length > 0) {
+          let flag = '<pre class="ql-syntax" spellcheck="false">';
+          if (cont.indexOf(flag) >= 0) {
+              if (cont.indexOf(flag) !== 0) {
+                  let codeOrigin = cont.indexOf(flag);
+                  dismantleCont.push({
+                      isCode: false,
+                      cont: cont.substring(0, codeOrigin)
+                  });
+                  cont = cont.substring(codeOrigin);
+              } else {
+                  let destination = cont.indexOf('</pre>');
+                  dismantleCont.push({
+                      isCode: true,
+                      cont: cont.substring(flag.length, destination).replace(/\&gt;/g, '>').replace(/\&lt;/g, '<')
+                  });
+                  cont = cont.substring(destination + 6);
+              }
+          } else {
+              dismantleCont.push({
+                  isCode: false,
+                  cont: cont
+              });
+              cont = '';
+          }
+      }
+      return dismantleCont;
+  }
 
 Page({
    
    data:{
+    comment_content:[],
     detailArticle:null,
     title:"",
     comment_count:0,
@@ -14,7 +50,7 @@ Page({
     type:'',
     id:"5d287ad94fd6125d8b30efe0",
     placeholder_img:"",
-    commentTotal:0,
+    commentTotal:-1,
     commentList:[
      // {
      //    "content": "[qq_102]",
@@ -203,7 +239,7 @@ Page({
    */
   onLoad: function (options) {
     wx.setNavigationBarTitle({
-      title: options.title || '',
+      title: decodeURIComponent(options.title) || '', //decodeURIComponent 解决乱码
       username:options.username
     })
     this.setData({
@@ -217,6 +253,11 @@ Page({
     this.getArticleDetail(options.articleId || '5d287ad94fd6125d8b30efe0')
     this.getArticleDetailCommentList(options.articleId || '5d287ad94fd6125d8b30efe0')
 
+  },
+
+  onPullDownRefresh(e) {
+     this.getArticleDetail(this.data.id)
+     this.getArticleDetailCommentList(this.data.id)
   },
 
    //隐藏Emoji
@@ -239,7 +280,10 @@ Page({
             let detailArticle = res.data.data;
             let conents = detailArticle.content;
              //处理富文本
-            WxParse.wxParse('article', 'html', conents, self, 5);
+         
+             WxParse.wxParse('article', 'html',conents, self, 5);
+
+
             self.setData({
               detailArticle: res.data.data.content,
               title:res.data.data.title,
@@ -255,6 +299,8 @@ Page({
 
   getArticleDetailCommentList: function(id){
      const self = this;
+     //清空富文本gif
+     self.data.comment_content = []
      let data = {
           page:self.data.page,
           pageSize:self.data.pageSize,
@@ -264,10 +310,28 @@ Page({
     request.getArticleDetailCommentList({
       data,
       success:(res)=>{
+        if(res.data.code == 200){
+             function getComments(data){
+              var res = [];
+              data.forEach(function(item,index,arr){
+                 item.content = util.getFace(item.content) //先转为img 
+                 
+                 WxParse.wxParse('temContent', 'html', item.content, self, 5); //再转为<image> 注意是异步
+
+                 self.data.comment_content.push(self.data.temContent);
+                 res.push(item)
+              })
+              return res
+            } 
+            
             self.setData({
               commentTotal: res.data.data.totalRecords,
-              commentList: res.data.data.list
+              commentList: getComments(res.data.data.list),
+              comment_content: self.data.comment_content
+            },function(){
+               
             })
+        }
            
       }
     })
@@ -282,12 +346,13 @@ Page({
 
      this.getArticleDetailCommentList(this.data.id)
   },
+
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: (res) => {
     return {
-      title: '文章详情',
+      title: decodeURIComponent(this.data.title),
       path: '/pages/article/article',
       success: (res) => {
         console.log("转发成功", res);

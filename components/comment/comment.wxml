@@ -17,27 +17,27 @@
 			</view>
 			<!--  解决微信小程序placeholder文字”悬浮“问题 -->
 			<view class="vedit">
-				<textarea id="veditor" placeholder-style="color: transparent {{!content ? 'color: transparent' :'' }}"  bindinput="bindKeyInputContent" value="{{content}}" maxlength="-1" class="veditor vinput" placeholder="请先输入昵称及邮箱，邮箱将用作邮件提醒" >
-					
-					  <!--  <cover-view>{{content}}</cover-view> -->
-             
-				</textarea>
+			     <cover-view wx:if="{{title !==''}}">
+					<textarea id="veditor"  bindinput="bindKeyInputContent" value="{{content}}" maxlength="-1" class="veditor vinput" placeholder="请先输入昵称及邮箱，在此留言" >
+	             
+					</textarea>
+				</cover-view>
 
 				<view class="vctrl">
 				   <text class="vemoji-btn" bindtap="showEmoji">表情</text>
 				</view>
 
-			 <block wx:if="{{flag}}">
-			 
-			 <scroll-view scroll-y style="height:200px;" >
-				<view class="vemojis">
-					<text name="grinning" title="grinning" wx:for="{{Emoji}}" wx:key="{{index}}" data-emoji="{{item}}" bindtap="getEmoji">
-						{{item}}
-					</text>
-	
-				</view>
-			</scroll-view>
-			 </block>
+				 <block wx:if="{{flag}}">
+				 
+					 <scroll-view scroll-y style="height:200px;" >
+						<view class="vemojis">
+							<text name="grinning" title="grinning" wx:for="{{Emoji}}" wx:key="{{index}}" data-emoji="{{item}}" bindtap="getEmoji">
+								{{item}}
+							</text>
+			
+						</view>
+					</scroll-view>
+				 </block>
 
 
 			</view>

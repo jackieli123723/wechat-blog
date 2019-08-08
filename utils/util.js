@@ -12,10 +12,50 @@ const formatTime = date => {
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
-}
+};
 
+const chunkRender = (data, bindName, target) => {
+  const chunk = 30;
+  const duration = 200;
+  let index = 1;
+  let nodes = data[bindName].nodes;
+  data[bindName].nodes = data[bindName].nodes.slice(0, chunk);
+  target.setData(data);
+
+  let nodeStore = [];
+
+  while (nodes.length > index * chunk) {
+    let start = index * chunk;
+    let end = (index + 1) * chunk;
+    nodeStore.push(nodes.slice(start, end));
+    index++;
+  }
+
+  nodeStore.forEach((node, index) => {
+    setTimeout(function(node) {
+      return function () {
+        let preNodes = target.data[bindName];
+        preNodes.nodes = preNodes.nodes.concat(node);
+        let data = {};
+        data[bindName] = preNodes;
+        target.setData(data);
+      }
+    }(node), index * duration)
+  });
+};
+
+
+const getFace = function (content){
+      return content.replace(/\[qq_(\d+?)\]/g,function(a,$1){
+        return '<img src="http://118.24.30.92:9000/static/img/face/qq/qq_'+$1+'.gif" />'
+      })
+}
 
 
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  chunkRender: chunkRender,
+  getFace:getFace
 }
+
+

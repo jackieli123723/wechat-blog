@@ -65,5 +65,20 @@ Page({
       tabIndex:index,
       text:index == 0 ? '工作开发作品列表' :'学习成果'
     })
+  },
+        /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: (res) => {
+    return {
+      title: '工作技能',
+      path: '/pages/work/work',
+      success: (res) => {
+        console.log("转发成功", res);
+      },
+      fail: (res) => {
+        console.log("转发失败", res);
+      }
+    }
   }
 })

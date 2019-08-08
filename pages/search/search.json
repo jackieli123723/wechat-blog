@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "文章检索"
+  "navigationBarTitleText": "文章检索",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "dark" 
 }

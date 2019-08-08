@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "工作"
+  "navigationBarTitleText": "工作",
+   "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark" 
 }

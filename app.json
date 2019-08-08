@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/search/search",
     "pages/article/article",
-    "pages/work/work",
+    "pages/search/search",
     "pages/about/about",
+    "pages/work/work"
   ],
   "window": {
     "backgroundTextStyle": "dark",

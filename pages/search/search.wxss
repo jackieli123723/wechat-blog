@@ -193,6 +193,7 @@ page {
   background-color: #fff;
 }
 /*lower-threshold 生效*/
+/*scroll-view 四个角定位死了 enablePullDownRefresh 失效*/
 scroll-view {
   position: absolute;
   bottom: 0;
